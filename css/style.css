@@ -1,0 +1,24 @@
+#particles-js {
+  width:100%;
+  height:100%;
+  margin:0 auto;
+/*  background:linear-gradient(#4e4376,#4e4376,#4e4376,#2b5876);*/
+  background:linear-gradient(#243949,#243949,#243949,#1e3c72);
+  position:absolute;
+}
+
+#w_milkyway {
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,0);
+  text-align: center;
+  position:absolute;
+  transform: rotate(50deg);
+}
+
+#milkyway {
+  width: 100px;               /* 幅指定 */
+  height: 100%;               /* 高さ指定 */
+  margin:  0 auto;
+  
+}
