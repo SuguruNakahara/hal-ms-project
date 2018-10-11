@@ -28,13 +28,13 @@ canvas {
   background-color: rgba(0,0,0,0);
   text-align: center;
   position:absolute;
+  overflow:hidden; 
 }
 
 #milkyway {
   width: 100px;               /* 幅指定 */
   height: 100%;               /* 高さ指定 */
-  margin:  0 auto;
-  transform: rotate(50deg);
+  position:absolute;
 }
 /* ---- stats.js ---- */
 .count-particles {
