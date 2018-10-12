@@ -7,26 +7,27 @@
     <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
     <script src="js/particles.js-master/particles.js"></script>
     <script src="js/audioManager.min.js"></script>
-    <style type="text/css">
-    canvas#sample {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        z-index: 9999;
-    }
-    </style>
+    <script src="js/audio.js"></script>
     <script type="text/javascript">
     function someFunc() {
-        aaa(300);
-        console.log("他の機能を同時に呼び出す関数");
+      aaa(300);
+      console.log("他の機能を同時に呼び出す関数");
     }
     </script>
+    <style type="text/css">
+    canvas#sample {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      z-index: 9999;
+    }
+    </style>
   </head>
   <body>
-    <input type="button" value="start" onclick="someFunc()"/>
+    <input id="startViewButton" type="button" value="start" onclick="someFunc()"/>
     <input type="button" value="end" onclick="aaa(0)"/>
 
     <!-- shooting star -->
@@ -41,9 +42,9 @@
     <!-- milky way -->
     <div id="milkyway"></div>
 
-    <script src="js/audio.js"></script>
     <script src="js/set.js"></script>
     <script src="js/anim.js"></script>
     <script src="js/star.js"></script>
+
   </body>
 </html>

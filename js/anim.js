@@ -119,6 +119,6 @@ particlesJS('milkyway',
 
 var box = document.getElementById('milkyway');
 
-box.style.top = 50 + 'px';
+box.style.top = 0 + 'px';
 box.style.left = 900 + 'px';
-box.style.transform = "rotate(30deg)";
+box.style.transform = "rotate(20deg)";
