@@ -1,8 +1,9 @@
+function bbb(value) {
 particlesJS('milkyway',
   {
     "particles": {
       "number": {
-        "value": 2000,
+        "value": value,
         "density": {
           "enable": true,
           "value_area": 800
@@ -116,6 +117,7 @@ particlesJS('milkyway',
     }
   }
 );
+}
 
 var box = document.getElementById('milkyway');
 

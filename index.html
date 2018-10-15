@@ -11,6 +11,7 @@
     <script type="text/javascript">
     function someFunc() {
       aaa(300);
+      bbb(2000);
       console.log("他の機能を同時に呼び出す関数");
     }
     </script>
@@ -28,7 +29,7 @@
   </head>
   <body>
     <input id="startViewButton" type="button" value="start" onclick="someFunc()"/>
-    <input type="button" value="end" onclick="aaa(0)"/>
+    <input type="button" value="end" onclick="aaa(0);bbb(0)"/>
 
     <!-- shooting star -->
     <div id="particles-js"></div>
