@@ -1,4 +1,4 @@
-function aaa(value) {
+function disp_background(value) {
 particlesJS('particles-js',
   {
     "particles": {

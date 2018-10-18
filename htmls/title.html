@@ -4,10 +4,21 @@
     <meta charset="utf-8">
     <title>HAL MS PROJECT</title>
     <link rel="stylesheet" href="../css/title.css">
+    <script src="../js/particles.js-master/particles.js"></script>
+    <script type="text/javascript">
+      function frameClick() {
+          document.location.href = "./openning.html";
+      }
+    </script>
   </head>
-  <body>
+  <body onload="disp_background(150)">
+    <div id="particles-js"></div>
     <div id=title>
-      <h1>starwars</h1>
+<!--      <img src="../img/SW1.png" width="55%" height="40%">-->
+      <img src="../img/SW2.png" width="55%" height="40%">
+      <br>
+      <a href="#" onclick="frameClick();" id=start>press start</a>
     </div>
+    <script src="../js/set.js"></script>
   </body>
 </html>

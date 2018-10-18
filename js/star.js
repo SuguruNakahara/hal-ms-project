@@ -13,7 +13,7 @@ particlesJS("particles-star", {
     },
     opacity: {
       value: 0.5,
-      random: true,
+      random: false,
       anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
     },
     size: {
@@ -27,7 +27,7 @@ particlesJS("particles-star", {
       }
     },
     line_linked: {
-      enable: true,
+      enable: false,
       distance: 1657.2100474277727,
       color: "#ffffff",
       opacity: 0.4,
@@ -35,9 +35,9 @@ particlesJS("particles-star", {
     },
     move: {
       enable: true,
-      speed: 20,
+      speed: 10,
       direction: "bottom",
-      random: false,
+      random: true,
       straight: false,
       out_mode: "out",
       bounce: false,
@@ -51,7 +51,7 @@ particlesJS("particles-star", {
   interactivity: {
     detect_on: "canvas",
     events: {
-      onhover: { enable: true, mode: "repulse" },
+      onhover: { enable: false, mode: "repulse" },
       onclick: { enable: false, mode: "push" },
       resize: true
     },

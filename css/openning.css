@@ -1,56 +1,113 @@
+@font-face {
+  font-family: 'description';
+  src: url('../font/Starjhol.ttf');
+}
+
+div{
+  font-family: 'description';
+}
+
 #target{
-    position:absolute;
-    top:-3000px;/*初期位置*/
-    bottom:0;
-    left:0;
-    right:0;
-    overflow:hidden;
-    font-size:30px;
-    text-align:center;
-    font-family:sans-serif;
+  position:absolute;
+  top:-3000px;/*初期位置*/
+  bottom:0;
+  left:0;
+  right:0;
+  overflow:hidden;
+  font-size:30px;
+  text-align:center;
+  font-family:sans-serif;
+  background-color: rgba(0,0,0,0);
 }
 
 #target>div{
-    padding-top:3500px;
-    animation:autoscroll 1000s linear;
+  padding-top:3500px;
+  animation:autoscroll 1000s linear;
 }
 
 html:after{
-    content:'';
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    background:linear-gradient(top,rgba(0,0,0,1),rgba(0,0,0,0) 100%);
-    background:linear-gradient(to bottom,rgba(0,0,0,1),rgba(0,0,0,0) 100%);
-    pointer-events:none;
+  content:'';
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background:linear-gradient(top,rgba(0,0,0,1),rgba(0,0,0,0) 100%);
+  background:linear-gradient(to bottom,rgba(0,0,0,1),rgba(0,0,0,0) 100%);
+  pointer-events:none;
+}
+
+#particles-js{
+  width:98%;
+  height:97%;
+  position: absolute;
 }
 
 #wrap{
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    transform-origin:50% 100%;
-    transform:perspective(300px) rotateX(12deg);
+  user-select: none;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  transform-origin:50% 100%;
+  transform:perspective(300px) rotateX(12deg);
+  background-color: rgba(0,0,0,0);
 }
 
 html{
-    color:yellow;
-    background:black;
+  color:yellow;
+  background:black;
 }
 
 @keyframes autoscroll{
-    to{
-        margin-top:-50000px;
-    }
+  to{
+    margin-top:-50000px;
+  }
 }
 
 #button_area{
+  position: fixed;
+  bottom: 20px;
+  right: 60px;
   transform-origin:50% 50%;
-  transform: perspective(none) rotateX(none;
+  transform: perspective(none) rotateX(none);
+}
+
+#skip{
+  width: 100px;
+  font-family: 'description';
+  display: inline-block;
+  text-align: center;
+  border: 2px solid yellow;
+  font-size: 16px;
+  color: yellow;
+  text-decoration: none;
+  margin-top: 30px;
+  padding: 10px 16px;
+  border-radius: 4px;
+  transition: .4s;
+}
+
+#skip:hover {
+  background-color: yellow;
+  border-color: black;
+  color: black;
+}
+
+body {
+  animation: fadeIn 3s ease 0s 1 normal;
+  -webkit-animation: fadeIn 3s ease 0s 1 normal;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0}
+  100% {opacity: 1}
 }
 
 

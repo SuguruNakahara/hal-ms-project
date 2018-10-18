@@ -1,4 +1,4 @@
-function bbb(value) {
+function disp_milkyway(value) {
 particlesJS('milkyway',
   {
     "particles": {
@@ -10,7 +10,7 @@ particlesJS('milkyway',
         }
       },
       "color": {
-        "value": "#ffffff"
+        "value": ["#00ffff","#ffffff"]
       },
       "shape": {
         "type": ["circle", "triangle","star","polygon"],
@@ -28,7 +28,7 @@ particlesJS('milkyway',
         }
       },
       "opacity": {
-        "value": 0.2,
+        "value": 0.4,
         "random": false,
         "anim": {
           "enable": false,
@@ -56,7 +56,7 @@ particlesJS('milkyway',
       },
       "move": {
         "enable": true,
-        "speed": 0.1,
+        "speed": 0.3,
         "direction": "bottom",
         "random": false,
         "straight": true,
