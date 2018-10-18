@@ -3,11 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title>HAL MS PROJECT</title>
-    <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="js/jquery.fademover.js"></script>
+    <script src="../js/particles.js-master/particles.js"></script>
+    <script type="text/javascript">
+      //10秒後遷移
+//      setTimeout(function(){
+//        window.location.href = './choice.html';
+//      }, 10*1000);
+
+      function frameClick() {
+        document.location.href = "./choice.html";
+      }
+    </script>
+
     <link rel="stylesheet" href="../css/openning.css">
   </head>
-  <body>
+  <body onload="disp_background(150)">
+    <div id="particles-js"></div>
     <div id="wrap">
       <div id="target">
         <div>
@@ -20,7 +31,8 @@
       </div>
     </div>
     <div id=button_area>
-      <button>cccc</button>
+      <a href="#" onclick="frameClick();" id=skip>skip ＞</a>
     </div>
+    <script src="../js/set.js"></script>
   </body>
 </html>

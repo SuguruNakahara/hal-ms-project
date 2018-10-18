@@ -1,0 +1,65 @@
+html{
+  background:black;
+}
+#button_area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  transform: translate(-50%, -50%);
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  text-align: center;
+  width: 800px;
+}
+/* フェードイン */
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+  animation: fadeIn 3s ease 0s 1 normal;
+  -webkit-animation: fadeIn 3s ease 0s 1 normal;
+}
+
+button {
+  margin: auto 10%;
+  padding: 4em 4em;
+  border: none;
+  display: inline-block;
+  background-color: #5A7AB3;
+  box-shadow: 0 6px #4063A4;
+  font-size: 114%;
+  line-height: 1;
+  color: #fff;
+  position: relative;
+  cursor: pointer;
+}
+
+.btn {
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0,0,0,.5);
+  top: 0;
+  transition: .2s all;
+}
+.btn:hover {
+  top: -2px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.5);
+}
+.btn:active {
+  box-shadow: 0 1px 1px rgba(0,0,0,.5);
+  top: 0;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+/* フェードインここまで */
