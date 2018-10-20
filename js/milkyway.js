@@ -1,5 +1,5 @@
-function star(value) {
-  particlesJS('particles-js',
+function milky(value) {
+  particlesJS('milkyway',
     {
       "particles": {
         "number": {
@@ -10,7 +10,7 @@ function star(value) {
           }
         },
         "color": {
-          "value": ["#ffffff", "#afeeee", "#ffff00","#ff4500"]
+          "value": value.color
         },
         "shape": {
           "type": ["circle", "triangle","star","polygon"],
@@ -28,7 +28,7 @@ function star(value) {
           }
         },
         "opacity": {
-          "value": 0.1,
+          "value": 0.2,
           "random": false,
           "anim": {
             "enable": false,
@@ -38,7 +38,7 @@ function star(value) {
           }
         },
         "size": {
-          "value": value.size,
+          "value": 4,
           "random": true,
           "anim": {
             "enable": true,
@@ -48,18 +48,18 @@ function star(value) {
           }
         },
         "line_linked": {
-          "enable": true,
-          "distance": 45,
+          "enable": false,
+          "distance": 150,
           "color": "#ffffff",
           "opacity": 0.4,
           "width": 1
         },
         "move": {
           "enable": true,
-          "speed": 0,
-          "direction": "none",
+          "speed": 0.1,
+          "direction": "bottom",
           "random": false,
-          "straight": false,
+          "straight": true,
           "out_mode": "out",
           "attract": {
             "enable": false,
@@ -106,7 +106,7 @@ function star(value) {
           }
         }
       },
-      "retina_detect": false,
+      "retina_detect": true,
       "config_demo": {
         "hide_card": false,
         "background_color": "#b61924",
@@ -117,4 +117,8 @@ function star(value) {
       }
     }
   );
+  var box = document.getElementById('milkyway');
+  box.style.top = value.top + 'px';
+  box.style.left = value.left + 'px';
+  box.style.transform = "rotate(" + value.rotate + "deg)";
 }

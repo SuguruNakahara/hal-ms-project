@@ -9,11 +9,41 @@
     <script src="../js/audioManager.min.js"></script>
     <script src="../js/audio.js"></script>
     <script type="text/javascript">
-    function someFunc() {
-      disp_background(300);
-      disp_milkyway(2000);
-      disp_shootingstar(1);
-      console.log("他の機能を同時に呼び出す関数");
+    function startDiplay() {
+      var starColor = ["#ffffff","#afeeee","#ffff00","#ff4500"];
+      var stars = {
+        "value": Math.floor(Math.random () * 300) + 100,
+        "size" : Math.floor(Math.random () * 8) + 3,
+        "opacity" : Math.floor(Math.random () * 9) / 10 + 0.1,
+        "color" : starColor[Math.floor(Math.random () * 3) + 0],
+      }
+
+      var shootings = {
+        "speed" : Math.floor(Math.random () * 30) + 20,
+        "size" : Math.floor(Math.random () * 7) + 3,
+        "opacity" :  Math.floor(Math.random () * 2) / 10 + 0.1,
+        "color" : starColor[Math.floor(Math.random () * 3) + 0],
+      }
+
+      var milkyColor = ["#ffffff","#fff000","00ff00","#f00fff","ff00ff","0f00ff"];
+      var milkys = {
+        "value" : Math.floor(Math.random () * 200) + 400,
+        "color" : milkyColor[Math.floor(Math.random () * 5) + 0],
+        "size" : Math.floor(Math.random () * 8) + 3,
+        "opacity" :  Math.floor(Math.random () * 3) / 10 + 0.1,
+        "top" : Math.floor(Math.random () * (window.parent.screen.heigth - 300)) + 600,
+        "left" : Math.floor(Math.random () * (window.parent.screen.width - 300)) + 600,
+        "rotate" : Math.floor(Math.random () * 360),
+      }
+
+      star(stars);
+      milky(milkys);
+      shooting(shootings);
+    }
+    function offDisplay() {
+      star(0);
+      milky(0);
+      shooting(0)
     }
     </script>
     <style type="text/css">
@@ -29,8 +59,8 @@
     </style>
   </head>
   <body>
-    <input id="startViewButton" type="button" value="start" onclick="someFunc()"/>
-    <input type="button" value="end" onclick="disp_background(0);disp_milkyway(0);disp_shootingstar(0)"/>
+    <input id="startViewButton" type="button" value="start" onclick="startDiplay()"/>
+    <input type="button" value="end" onclick="offDisplay()"/>
 
     <!-- shooting star -->
     <div id="particles-js"></div>
@@ -44,8 +74,8 @@
     <!-- milky way -->
     <div id="milkyway"></div>
 
-    <script src="../js/set.js"></script>
-    <script src="../js/anim.js"></script>
+    <script src="../js/shooting.js"></script>
+    <script src="../js/milkyway.js"></script>
     <script src="../js/star.js"></script>
 
   </body>
