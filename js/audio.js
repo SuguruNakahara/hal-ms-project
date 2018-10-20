@@ -63,7 +63,7 @@ window.onload = function() {
   })).init();
 
   manager.load({
-    bgm: './audio/justUs.m4a'
+    bgm: '../audio/justUs.m4a'
     // bgm: '../audio/sample.mp3'
   });
 

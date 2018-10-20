@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>HAL MS PROJECT</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
+    <script src="../js/particles.js-master/particles.js"></script>
+    <script src="../js/audioManager.min.js"></script>
+    <script src="../js/audio.js"></script>
+    <script type="text/javascript">
+    function someFunc() {
+      disp_background(300);
+      disp_milkyway(2000);
+      disp_shootingstar(1);
+      console.log("他の機能を同時に呼び出す関数");
+    }
+    </script>
+    <style type="text/css">
+    canvas#sample {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      z-index: 9999;
+    }
+    </style>
+  </head>
+  <body>
+    <input id="startViewButton" type="button" value="start" onclick="someFunc()"/>
+    <input type="button" value="end" onclick="disp_background(0);disp_milkyway(0);disp_shootingstar(0)"/>
+
+    <!-- shooting star -->
+    <div id="particles-js"></div>
+
+    <!-- audio sun -->
+    <canvas id="sample"></canvas>
+
+    <!-- planetarium star's -->
+    <div id="particles-star"></div>
+
+    <!-- milky way -->
+    <div id="milkyway"></div>
+
+    <script src="../js/set.js"></script>
+    <script src="../js/anim.js"></script>
+    <script src="../js/star.js"></script>
+
+  </body>
+</html>
