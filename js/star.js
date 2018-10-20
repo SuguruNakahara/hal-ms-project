@@ -1,7 +1,8 @@
+function disp_shootingstar(value) {
 particlesJS("particles-star", {
   particles: {
     number: {
-      value: 1,
+      value: value,
       density: { enable: true, value_area: 5681.8630197523635 }
     },
     color: { value: "#ffffff" },
@@ -68,3 +69,4 @@ particlesJS("particles-star", {
   },
   retina_detect: false
 });
+}
