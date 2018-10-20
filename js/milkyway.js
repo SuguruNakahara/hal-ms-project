@@ -28,7 +28,7 @@ function milky(value) {
           }
         },
         "opacity": {
-          "value": 0.2,
+          "value": value.opacity,
           "random": false,
           "anim": {
             "enable": false,
@@ -38,7 +38,7 @@ function milky(value) {
           }
         },
         "size": {
-          "value": 4,
+          "value": value.size,
           "random": true,
           "anim": {
             "enable": true,

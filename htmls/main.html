@@ -9,37 +9,50 @@
     <script src="../js/particles.js-master/particles.js"></script>
     <script src="../js/audioManager.min.js"></script>
     <script src="../js/audio.js"></script>
+    <script type="text/javascript" src="../data.json"></script>
     <script type="text/javascript">
     function startDiplay() {
-      var starColor = ["#ffffff","#afeeee","#ffff00","#ff4500"];
-      var stars = {
-        "value": Math.floor(Math.random () * 300) + 100,
-        "size" : Math.floor(Math.random () * 8) + 3,
-        "opacity" : Math.floor(Math.random () * 9) / 10 + 0.1,
-        "color" : starColor[Math.floor(Math.random () * 3) + 0],
-      }
+      $.getJSON("../data.json", function(data) {
 
-      var shootings = {
-        "speed" : Math.floor(Math.random () * 30) + 20,
-        "size" : Math.floor(Math.random () * 7) + 3,
-        "opacity" :  Math.floor(Math.random () * 2) / 10 + 0.1,
-        "color" : starColor[Math.floor(Math.random () * 3) + 0],
-      }
+        /* 範囲乱数数値sample
+          最小 50, 最大 200
+          Math.floor( Math.random() * (200 + 1 - 50) ) + 50 ;
+        */
 
-      var milkyColor = ["#ffffff","#fff000","00ff00","#f00fff","ff00ff","0f00ff"];
-      var milkys = {
-        "value" : Math.floor(Math.random () * 200) + 400,
-        "color" : milkyColor[Math.floor(Math.random () * 5) + 0],
-        "size" : Math.floor(Math.random () * 8) + 3,
-        "opacity" :  Math.floor(Math.random () * 3) / 10 + 0.1,
-        "top" : Math.floor(Math.random () * (window.parent.screen.heigth - 300)) + 600,
-        "left" : Math.floor(Math.random () * (window.parent.screen.width - 300)) + 600,
-        "rotate" : Math.floor(Math.random () * 360),
-      }
+        var colorList = [
+          ["#ff0000","#ffbb00","#ffbbbb","#ff00bb"], // red
+          ["#00ff00","#bbff00","#bbffbb","#00ffbb"], // green
+          ["#0000ff","#bb00ff","#00bbff","#bbbbff"]  // blue
+        ];
 
-      star(stars);
-      milky(milkys);
-      shooting(shootings);
+        var stars = {
+          "value" : data[0]["star"]["value"],
+          "size" : data[0]["star"]["size"],
+          "opacity" : data[0]["star"]["opacity"],
+          "color" : colorList[data[0]["star"]["color"]],
+        }
+
+        var shootings = {
+          "speed" : data[0]["shootingstar"]["speed"],
+          "size" : data[0]["shootingstar"]["size"],
+          "opacity" : data[0]["shootingstar"]["opacity"],
+          "color" : colorList[data[0]["shootingstar"]["color"]],
+        }
+
+        var milkys = {
+          "value" : data[0]["milkyway"]["value"],
+          "color" : colorList[data[0]["milkyway"]["color"]],
+          "size" : data[0]["milkyway"]["size"],
+          "opacity" : data[0]["milkyway"]["opacity"],
+          "top" : data[0]["milkyway"]["top"],
+          "left" : data[0]["milkyway"]["left"],
+          "rotate" : data[0]["milkyway"]["rotate"],
+        }
+
+        star(stars);
+        milky(milkys);
+        shooting(shootings);
+      });
     }
     function offDisplay() {
       star(0);
@@ -48,7 +61,7 @@
     }
     </script>
     <style type="text/css">
-    canvas#sample {
+    canvas#visualizer {
       position: absolute;
       top: 0;
       left: 0;
@@ -63,11 +76,11 @@
     <input id="startViewButton" type="button" value="start" onclick="startDiplay()"/>
     <input type="button" value="end" onclick="offDisplay()"/>
 
+    <!-- audio sun -->
+    <canvas id="visualizer"></canvas>
+
     <!-- shooting star -->
     <div id="particles-js"></div>
-
-    <!-- audio sun -->
-    <canvas id="sample"></canvas>
 
     <!-- planetarium star's -->
     <div id="particles-star"></div>

@@ -5,7 +5,9 @@ function shooting(value){
         value: 1,
         density: { enable: true, value_area: 5681.8630197523635 }
       },
-      color: { value: value.color },
+      color: {
+        "value": value.color
+      },
       shape: {
         type: "star",
         stroke: { width: 0, color: "#000000" },
@@ -14,7 +16,7 @@ function shooting(value){
       },
       opacity: {
         value: value.opacity,
-        random: true,
+        random: false,
         anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
       },
       size: {

@@ -10,7 +10,7 @@ function star(value) {
           }
         },
         "color": {
-          "value": ["#ffffff", "#afeeee", "#ffff00","#ff4500"]
+          "value": value.color
         },
         "shape": {
           "type": ["circle", "triangle","star","polygon"],
@@ -28,7 +28,7 @@ function star(value) {
           }
         },
         "opacity": {
-          "value": 0.1,
+          "value": value.opacity,
           "random": false,
           "anim": {
             "enable": false,
