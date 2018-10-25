@@ -98,6 +98,14 @@ html{
 body {
   animation: fadeIn 3s ease 0s 1 normal;
   -webkit-animation: fadeIn 3s ease 0s 1 normal;
+/* フェードアウト */
+  transition: all 7s;
+  background-color: white;
+}
+
+/*フェードアウト*/
+.bodyfadeout{
+  opacity: 0;
 }
 
 @keyframes fadeIn {

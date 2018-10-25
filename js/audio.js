@@ -6,7 +6,7 @@ var manager,
 
 window.onload = function() {
 
-  $('#sample').attr('height', $('.body').height() + 300);
+//  $('#visualizer').attr('height', $('.body').height() + 300);
 
   var isLoaded = false,
       isClicked = false;

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="../css/recode.css">
+  <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
+  <script src="../js/audioManager.min.js"></script>
+  <script type="text/javascript">
+  var btn_count=0;
+
+  // フェードアウト
+  function fadeOut(node, duration) {
+    node.style.opacity = 1;
+
+    var start = performance.now();
+
+    requestAnimationFrame(function tick(timestamp) {
+      // イージング計算式（linear）
+      var easing = (timestamp - start) / duration;
+
+      // opacityが0より小さくならないように
+      node.style.opacity = Math.max(1 - easing, 0);
+
+      // イージング計算式の値が1より小さいとき
+      if (easing < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        node.style.opacity = '';
+        node.style.display = 'none';
+      }
+    });
+  }
+
+  //ボタン制御
+  function buttonControl(){
+    btn_count++;
+    if(btn_count==1){
+      document.getElementById("btn").innerText="stop"
+      play(this);
+
+    }else if(btn_count==2){
+      fadeOut(document.querySelector('.selector'), 5000);
+      setTimeout(function(){
+        var target = document.getElementById("form");
+        target.method = "post";
+        target.submit();
+      },5000)
+    }
+  }
+  
+  </script>
+</head>
+<body class="selector">
+
+<!--<input type="button" value="集音検知とvisualizerテスト" onclick="play(this);onRecod(this);">-->
+
+<!--<hr>-->
+
+<!--<input type="button" value="サンプル音源テスト再生" onclick="play(this)">-->
+<!--<input type="button" id="stopButton" value="サンプル音源停止">-->
+
+<!--<br>-->
+
+<!--<input id="recodButton" type="button" value="集音し、音源アップロード" onclick="onRecod(this)">-->
+<!--<input id="recodStopButton" type="button" value="集音停止" onclick="offRecod(this)" disabled="">-->
+
+<canvas id="visualizer" ></canvas>
+
+<script>
+  
+  // 比較用配列
+  var arr = new Array();
+  // 実際使用配列
+  var data = new Array();
+  // 現在時刻命名用
+  var now = Date.now();
+  // audio manager 初期化
+  var manager;
+
+  // visualizer && recoder view
+  var canvas;
+  var canvasContext;
+  canvas = document.querySelector('canvas');
+  canvasContext = canvas.getContext('2d');
+  canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+  canvasContext.strokeStyle ='#0ff';
+  
+  canvasContext.fillStyle ='rgb(0, 255, 255)';
+  canvasContext.lineWidth = 1.0;
+
+  canvasContext.save();
+  canvasContext.translate(canvas.width/2, canvas.height/2);
+  canvasContext.beginPath();
+
+  canvasContext.arc(0, 0, 58, 20, 80 * Math.PI / 180, true);
+  canvasContext.fill();
+
+  canvasContext.stroke();
+  canvasContext.translate(-canvas.width/2, -canvas.height/2);
+  canvasContext.restore();
+
+  var play = function(button) {
+
+    // リアルタイム集音
+    if(btn_count==1) {
+      manager = (new AudioManager({
+        fps             : 60,
+        useMicrophone   : true,
+        onMicInitFaild  : function() {
+          console.log('マイク入力がリジェクトされました');
+        },
+
+        onEnterFrame: function() {
+          console.log(Utils.sum(this.analysers.mic.getByteFrequencyData()));
+          arr.push(Utils.sum(manager.analysers.mic.getByteFrequencyData(128)));
+          data.push(manager.analysers.mic.getByteFrequencyData(128));
+
+          var me  = this,
+          dat = me.analysers.mic.getByteFrequencyData(128),
+          len = dat.length,
+          haf = len / 2,
+          rad = 60,
+          siz = 60;
+
+          canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+          canvasContext.strokeStyle ='#0ff';
+          
+          canvasContext.fillStyle ='rgb(0, 255, 255)';
+          canvasContext.lineWidth = 1.0;
+
+          canvasContext.save();
+          canvasContext.translate(canvas.width/2, canvas.height/2);
+          canvasContext.beginPath();
+
+          // 円塗りつぶし
+          canvasContext.arc(0, 0, 58, 20, 80 * Math.PI / 180, true);
+          canvasContext.fill();
+
+          for (var i = 0; i < len; i++) {
+            canvasContext.moveTo(rad+(siz*Math.floor((dat[i]/255)*100)/100),0);
+            canvasContext.lineTo(rad-1,0);
+            canvasContext.rotate(Math.PI/haf);
+          }
+
+          canvasContext.stroke();
+          canvasContext.translate(-canvas.width/2, -canvas.height/2);
+          canvasContext.restore();
+
+        }
+      })).init();
+
+      document.getElementById("recodStopButton").onclick = function() {
+        var index = arr.indexOf(Math.max.apply(null,arr));
+        // console.log(Utils.sum( data[index] ));
+        console.log( data[index] );
+      };
+
+    // 音楽データ使用
+    } else {
+      manager = (new AudioManager({
+        fps : 60,
+        onLoaded: function() {
+          this.play('bgm');
+          // 音源データ再生時間
+          var playTime = Math.round(manager.sources.bgm.buffer.duration) * 1000;
+          setTimeout(function() {
+            manager.stop('bgm');
+            console.log("データ全取得後、最大値配列の出力");
+            var index = arr.indexOf(Math.max.apply(null,arr));
+            console.log(Utils.sum( data[index] ));
+            manager.stopLoop();
+          }, playTime);
+        },
+        onEnterFrame: function() {
+          if (this.isPlaying('bgm')) {
+            arr.push(Utils.sum(manager.analysers.bgm.getByteFrequencyData(128)));
+            data.push(manager.analysers.bgm.getByteFrequencyData(128));
+          }
+        }
+      })).init();
+
+      // 読み込み音源
+      // var audioPath = '../audio/' + now + '.mp3';
+      var audioPath = '../audio/justUs.m4a';
+
+      // 音源初期読み込み
+      manager.load({
+        bgm: {
+          path: audioPath,
+          loop: false,
+          sound: true,
+        }
+      });
+
+      // 再生音源停止
+      document.getElementById("stopButton").onclick = function() {
+        if (manager.isPlaying('bgm')) {
+          manager.stop('bgm');
+        }
+      };
+    }
+  }
+
+  // 音源録音用
+  var recorder;
+  // データ配列
+  var chunks = [];
+
+  var offRecod = function(button) {
+    recorder.stop();
+  }
+
+  var onRecod = function(button) {
+    document.getElementById("recodStopButton").disabled = false;
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+    navigator.getUserMedia({
+      audio: true,
+      video: false
+    }, successFunc, errorFunc);
+  }
+
+  function successFunc(stream) {
+    recorder = new MediaRecorder(stream, {
+      mimeType: 'video/webm;codecs=vp9'
+    });
+
+    recorder.addEventListener('dataavailable', function(ele) {
+      if (ele.data.size > 0) {
+        chunks.push(ele.data);
+      }
+    });
+
+    recorder.addEventListener('stop', function() {
+      fileUpload();
+      document.getElementById("recodStopButton").disabled = true;
+    });
+
+    // 自動停止 OR 手動停止
+    recorder.start();
+    // setTimeout(function() {
+    //     recorder.stop();
+    // }, 5000);
+
+  }
+
+  function errorFunc(error) {
+    console.log("error");
+  }
+
+  function fileUpload()
+  {
+    var soundData = now + ".mp3";
+    var formdata = new FormData();
+    formdata.append("file_1", new Blob(chunks, {type:"video/webm"}), soundData);
+    var xhttpreq = new XMLHttpRequest();
+    xhttpreq.onreadystatechange = function() {
+      if (xhttpreq.readyState == 4 && xhttpreq.status == 200) {
+        alert(xhttpreq.responseText);
+      }
+    };
+    xhttpreq.open("POST", "http://0.0.0.0:8008/upload.php", true);
+    xhttpreq.send(formdata);
+  }
+
+  function testUpload()
+  {
+
+    var fileName = "test.json";
+    var formdata = new FormData();
+
+    const data = {
+      name: 'suguru',
+      message: 'hello'
+    };
+
+    formdata.append("file", new Blob([JSON.stringify(data, null, '  ')], {type: 'application\/json'}), fileName);
+    var xhttpreq = new XMLHttpRequest();
+    xhttpreq.onreadystatechange = function() {
+      if (xhttpreq.readyState == 4 && xhttpreq.status == 200) {
+        alert(xhttpreq.responseText);
+      }
+    };
+    xhttpreq.open("POST", "http://0.0.0.0:8008/index.php", true);
+    xhttpreq.send(formdata);
+  }
+
+</script>
+
+<div id="background"></div>
+
+<!--<h2>フォーム画面</h2>-->
+<!--<p>ここからmain画面に遷移</p>-->
+
+<form action="main.html" method="post" id="form">
+<input type="hidden" name="a" value="aaa" id="hide">
+<!--
+<p>
+名前：<input type="text" name="name" size="40">
+</p>
+-->
+<!--<p>-->
+<!--性別：<input type="radio" name="sex" value="male">男-->
+<!--<input type="radio" name="sex" value="female">女-->
+<!--</p>-->
+<!--<p>-->
+<div id=button_area>
+  <a href="javascript:void(0)" id="btn" class="button" onclick="buttonControl()">start</a>
+</div>
+<!--<input type="submit" value="送信" id="btn">-->
+<!--<input type="reset" value="リセット"1/p>-->
+</form>
+
+<!--<hr>-->
+
+<input type="submit" value="test.json作成テスト_値固定" onclick="testUpload()">
+
+</body>
