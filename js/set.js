@@ -1,16 +1,16 @@
-function disp_background(value) {
+function star(stars) {
 particlesJS('particles-js',
   {
     "particles": {
       "number": {
-        "value": value,
+        "value": stars.value,
         "density": {
           "enable": true,
           "value_area": 800
         }
       },
       "color": {
-        "value": ["#ffffff", "#afeeee", "#ffff00","#ff4500"]
+        "value": stars.color
       },
       "shape": {
         "type": ["circle", "triangle","star","polygon"],
@@ -28,7 +28,7 @@ particlesJS('particles-js',
         }
       },
       "opacity": {
-        "value": 0.5,
+        "value": stars.opacity,
         "random": false,
         "anim": {
           "enable": false,
@@ -38,7 +38,7 @@ particlesJS('particles-js',
         }
       },
       "size": {
-        "value": 3,
+        "value": stars.size,
         "random": true,
         "anim": {
           "enable": true,

@@ -1,11 +1,11 @@
-function disp_shootingstar(value) {
+function shooting(shootings) {
 particlesJS("particles-star", {
   particles: {
     number: {
-      value: value,
+      value: 1,
       density: { enable: true, value_area: 5681.8630197523635 }
     },
-    color: { value: "#ffffff" },
+    color: { "value": shootings.color },
     shape: {
       type: "star",
       stroke: { width: 0, color: "#000000" },
@@ -13,12 +13,12 @@ particlesJS("particles-star", {
       image: { src: "img/github.svg", width: 100, height: 100 }
     },
     opacity: {
-      value: 0.5,
+      value: shootings.opacity,
       random: false,
       anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
     },
     size: {
-      value: 4.008530152163807,
+      value: shootings.size,
       random: false,
       anim: {
         enable: false,
@@ -36,7 +36,7 @@ particlesJS("particles-star", {
     },
     move: {
       enable: true,
-      speed: 10,
+      speed: shootings.speed,
       direction: "bottom",
       random: true,
       straight: false,
