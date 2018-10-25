@@ -6,6 +6,7 @@
   <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
   <script src="../js/audioManager.min.js"></script>
   <script type="text/javascript">
+
   var btn_count=0;
 
   // フェードアウト
@@ -51,22 +52,16 @@
   </script>
 </head>
 <body class="selector">
-
-<!--<input type="button" value="集音検知とvisualizerテスト" onclick="play(this);onRecod(this);">-->
-
-<!--<hr>-->
-
-<!--<input type="button" value="サンプル音源テスト再生" onclick="play(this)">-->
-<!--<input type="button" id="stopButton" value="サンプル音源停止">-->
-
-<!--<br>-->
-
 <!--<input id="recodButton" type="button" value="集音し、音源アップロード" onclick="onRecod(this)">-->
-<!--<input id="recodStopButton" type="button" value="集音停止" onclick="offRecod(this)" disabled="">-->
-
+<input id="recodStopButton" type="button" value="集音停止" onclick="offRecod()">
+<input type="submit" value="test.json作成テスト_値固定" onclick="testUpload()">
 <canvas id="visualizer" ></canvas>
 
 <script>
+  
+  /*****************************
+  * web audio api
+  *****************************/
   
   // 比較用配列
   var arr = new Array();
@@ -80,6 +75,9 @@
   // visualizer && recoder view
   var canvas;
   var canvasContext;
+
+  $('#visualizer').attr('height', $('.body').height() + 300);
+
   canvas = document.querySelector('canvas');
   canvasContext = canvas.getContext('2d');
   canvasContext.clearRect(0, 0, canvas.width, canvas.height);
@@ -99,7 +97,7 @@
   canvasContext.translate(-canvas.width/2, -canvas.height/2);
   canvasContext.restore();
 
-  var play = function(button) {
+  var play = function() {
 
     // リアルタイム集音
     if(btn_count==1) {
@@ -111,9 +109,9 @@
         },
 
         onEnterFrame: function() {
-          console.log(Utils.sum(this.analysers.mic.getByteFrequencyData()));
-          arr.push(Utils.sum(manager.analysers.mic.getByteFrequencyData(128)));
-          data.push(manager.analysers.mic.getByteFrequencyData(128));
+          // console.log(Utils.sum(this.analysers.mic.getByteFrequencyData()));
+          arr.push(Utils.sum(manager.analysers.mic.getByteFrequencyData(16)));
+          data.push(manager.analysers.mic.getByteFrequencyData(16));
 
           var me  = this,
           dat = me.analysers.mic.getByteFrequencyData(128),
@@ -154,63 +152,23 @@
         // console.log(Utils.sum( data[index] ));
         console.log( data[index] );
       };
-
-    // 音楽データ使用
-    } else {
-      manager = (new AudioManager({
-        fps : 60,
-        onLoaded: function() {
-          this.play('bgm');
-          // 音源データ再生時間
-          var playTime = Math.round(manager.sources.bgm.buffer.duration) * 1000;
-          setTimeout(function() {
-            manager.stop('bgm');
-            console.log("データ全取得後、最大値配列の出力");
-            var index = arr.indexOf(Math.max.apply(null,arr));
-            console.log(Utils.sum( data[index] ));
-            manager.stopLoop();
-          }, playTime);
-        },
-        onEnterFrame: function() {
-          if (this.isPlaying('bgm')) {
-            arr.push(Utils.sum(manager.analysers.bgm.getByteFrequencyData(128)));
-            data.push(manager.analysers.bgm.getByteFrequencyData(128));
-          }
-        }
-      })).init();
-
-      // 読み込み音源
-      // var audioPath = '../audio/' + now + '.mp3';
-      var audioPath = '../audio/justUs.m4a';
-
-      // 音源初期読み込み
-      manager.load({
-        bgm: {
-          path: audioPath,
-          loop: false,
-          sound: true,
-        }
-      });
-
-      // 再生音源停止
-      document.getElementById("stopButton").onclick = function() {
-        if (manager.isPlaying('bgm')) {
-          manager.stop('bgm');
-        }
-      };
     }
   }
+
+  /*****************************
+  * sound recode && uploaded
+  *****************************/
 
   // 音源録音用
   var recorder;
   // データ配列
   var chunks = [];
 
-  var offRecod = function(button) {
+  var offRecod = function() {
     recorder.stop();
   }
 
-  var onRecod = function(button) {
+  var onRecod = function() {
     document.getElementById("recodStopButton").disabled = false;
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
     navigator.getUserMedia({
@@ -288,30 +246,11 @@
 
 <div id="background"></div>
 
-<!--<h2>フォーム画面</h2>-->
-<!--<p>ここからmain画面に遷移</p>-->
-
 <form action="main.html" method="post" id="form">
 <input type="hidden" name="a" value="aaa" id="hide">
-<!--
-<p>
-名前：<input type="text" name="name" size="40">
-</p>
--->
-<!--<p>-->
-<!--性別：<input type="radio" name="sex" value="male">男-->
-<!--<input type="radio" name="sex" value="female">女-->
-<!--</p>-->
-<!--<p>-->
 <div id=button_area>
   <a href="javascript:void(0)" id="btn" class="button" onclick="buttonControl()">start</a>
 </div>
-<!--<input type="submit" value="送信" id="btn">-->
-<!--<input type="reset" value="リセット"1/p>-->
 </form>
-
-<!--<hr>-->
-
-<input type="submit" value="test.json作成テスト_値固定" onclick="testUpload()">
 
 </body>
