@@ -53,12 +53,10 @@
 </head>
 <body class="selector">
 <!--<input id="recodButton" type="button" value="集音し、音源アップロード" onclick="onRecod(this)">-->
-<input id="recodStopButton" type="button" value="集音停止" onclick="offRecod()">
-<input type="submit" value="test.json作成テスト_値固定" onclick="testUpload()">
 <canvas id="visualizer" ></canvas>
 
 <script>
-  
+
   /*****************************
   * web audio api
   *****************************/
@@ -98,6 +96,8 @@
   canvasContext.restore();
 
   var play = function() {
+
+    onRecod();
 
     // リアルタイム集音
     if(btn_count==1) {
@@ -149,8 +149,8 @@
 
       document.getElementById("recodStopButton").onclick = function() {
         var index = arr.indexOf(Math.max.apply(null,arr));
-        // console.log(Utils.sum( data[index] ));
-        console.log( data[index] );
+        jsonUpload(data[index]);
+        offRecod();
       };
     }
   }
@@ -164,12 +164,11 @@
   // データ配列
   var chunks = [];
 
-  var offRecod = function() {
+  const offRecod = function() {
     recorder.stop();
   }
 
   var onRecod = function() {
-    document.getElementById("recodStopButton").disabled = false;
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
     navigator.getUserMedia({
       audio: true,
@@ -189,53 +188,58 @@
     });
 
     recorder.addEventListener('stop', function() {
-      fileUpload();
-      document.getElementById("recodStopButton").disabled = true;
+      soundUpload();
     });
 
-    // 自動停止 OR 手動停止
     recorder.start();
-    // setTimeout(function() {
-    //     recorder.stop();
-    // }, 5000);
-
   }
 
   function errorFunc(error) {
     console.log("error");
   }
 
-  function fileUpload()
+  function soundUpload()
   {
-    var soundData = now + ".mp3";
-    var formdata = new FormData();
-    formdata.append("file_1", new Blob(chunks, {type:"video/webm"}), soundData);
-    var xhttpreq = new XMLHttpRequest();
+    const soundData = now + ".mp3";
+    const formdata = new FormData();
+    formdata.append("file", new Blob(chunks, {type:"video/webm"}), soundData);
+    const xhttpreq = new XMLHttpRequest();
     xhttpreq.onreadystatechange = function() {
       if (xhttpreq.readyState == 4 && xhttpreq.status == 200) {
-        alert(xhttpreq.responseText);
+        console.log(xhttpreq.responseText);
       }
     };
     xhttpreq.open("POST", "http://0.0.0.0:8008/upload.php", true);
     xhttpreq.send(formdata);
   }
 
-  function testUpload()
+  function jsonUpload(arr)
   {
-
-    var fileName = "test.json";
-    var formdata = new FormData();
-
     const data = {
-      name: 'suguru',
-      message: 'hello'
+      "star-value" : arr[0],
+      "star-size" : arr[1],
+      "star-opacity" : arr[2],
+      "star-color" : arr[3],
+      "shooting-speed" : arr[4],
+      "shooting-size" : arr[5],
+      "shooting-opacity" : arr[6],
+      "shooting-color" : arr[7],
+      "milkyway-value" : arr[8],
+      "milkyway-color" : arr[9],
+      "milkyway-size" : arr[10],
+      "milkyway-opacity" : arr[11],
+      "milkyway-top" : arr[12],
+      "milkyway-left" : arr[13],
+      "milkyway-rotate" : arr[14]
     };
 
+    const fileName = now + ".json";
+    const formdata = new FormData();
     formdata.append("file", new Blob([JSON.stringify(data, null, '  ')], {type: 'application\/json'}), fileName);
-    var xhttpreq = new XMLHttpRequest();
+    const xhttpreq = new XMLHttpRequest();
     xhttpreq.onreadystatechange = function() {
       if (xhttpreq.readyState == 4 && xhttpreq.status == 200) {
-        alert(xhttpreq.responseText);
+        console.log(xhttpreq.responseText);
       }
     };
     xhttpreq.open("POST", "http://0.0.0.0:8008/index.php", true);
@@ -243,6 +247,8 @@
   }
 
 </script>
+
+<input id="recodStopButton" type="button" value="集音停止" onclick="offRecod()">
 
 <div id="background"></div>
 
