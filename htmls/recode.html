@@ -7,7 +7,15 @@
   <link rel="stylesheet" href="../css/recode.css">
   <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
   <script src="../js/audioManager.min.js"></script>
-  <script type="text/javascript">
+</head>
+<body class="selector">
+<canvas id="visualizer" ></canvas>
+
+<script>
+
+  /*****************************
+  * fade out
+  *****************************/
 
   var btn_count=0;
 
@@ -42,22 +50,22 @@
       play(this);
 
     }else if(btn_count==2){
-      fadeOut(document.querySelector('.selector'), 5000);
+
+      // upload data
+      var index = arr.indexOf(Math.max.apply(null,arr));
+      jsonUpload(data[index]);
+      offRecod();
+
+      fadeOut(document.querySelector('.selector'), 500);
       setTimeout(function(){
         var target = document.getElementById("form");
-        target.method = "post";
+        target.method = "get";
+        target.elements["name"].value = now;
         target.submit();
-      },5000)
+
+      },500)
     }
   }
-  
-  </script>
-</head>
-<body class="selector">
-<!--<input id="recodButton" type="button" value="集音し、音源アップロード" onclick="onRecod(this)">-->
-<canvas id="visualizer" ></canvas>
-
-<script>
 
   /*****************************
   * web audio api
@@ -65,7 +73,7 @@
   
   // 比較用配列
   var arr = new Array();
-  // 実際使用配列
+  // 一時保存配列
   var data = new Array();
   // 現在時刻命名用
   var now = Date.now();
@@ -99,6 +107,7 @@
 
   var play = function() {
 
+    // recorded
     onRecod();
 
     // リアルタイム集音
@@ -111,7 +120,6 @@
         },
 
         onEnterFrame: function() {
-          // console.log(Utils.sum(this.analysers.mic.getByteFrequencyData()));
           arr.push(Utils.sum(manager.analysers.mic.getByteFrequencyData(16)));
           data.push(manager.analysers.mic.getByteFrequencyData(16));
 
@@ -147,13 +155,8 @@
           canvasContext.restore();
 
         }
-      })).init();
 
-      document.getElementById("recodStopButton").onclick = function() {
-        var index = arr.indexOf(Math.max.apply(null,arr));
-        jsonUpload(data[index]);
-        offRecod();
-      };
+      })).init();
     }
   }
 
@@ -250,12 +253,12 @@
 
 </script>
 
-<input id="recodStopButton" type="button" value="集音停止" onclick="offRecod()">
+<input id="recodStopButton" type="button" value="集音停止">
 
 <div id="background"></div>
 
 <form action="main.html" method="post" id="form">
-<input type="hidden" name="a" value="aaa" id="hide">
+<input type="hidden" name="name" value="">
 <div id=button_area>
   <a href="javascript:void(0)" id="btn" class="button" onclick="buttonControl()">start</a>
 </div>
