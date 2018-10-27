@@ -10,8 +10,8 @@ body {
   vertical-align: middle;
   animation: fadeIn 3s ease 0s 1 normal;
   -webkit-animation: fadeIn 3s ease 0s 1 normal;
-  
 }
+
 /*
 form{
   position: absolute;
@@ -41,11 +41,12 @@ canvas#visualizer {
   width: 10%;
   height: 20%;
   display: inline-block;
-  padding: .5em 4em;
-  border: 2px solid #fff;
-  border-radius: 30px;
+  padding: 0.5% 2%;
+  border-style:solid;
+  border-width:thin;
+/*  border-radius: 30px;*/
+  border-radius: 15% / 50% ;
   color: #fff;
-  text-align: center;
   text-decoration: none;
   outline: none;
   transition: all .3s;
@@ -54,7 +55,7 @@ canvas#visualizer {
 .button:active{  /* ボタンを押したとき */
   background:rgba(255,255,255,.6);
   border: none;
-  box-shadow:  0 0.5px 0.5px #cccbc9, inset 0 0 1px rgba(0, 0, 0, 0.3);
+  box-shadow:  0 0.5% 0.5% #cccbc9, inset 0 0 1% rgba(0, 0, 0, 0.3);
 }
 
 #button_area{
@@ -64,6 +65,7 @@ canvas#visualizer {
   top: 75%;
   left: 50%;
   margin: auto;
+  text-align: center;
   transform: translate(-50%, -50%);
   z-index: 3;
 }
