@@ -85,13 +85,12 @@
         }
 
         var milkys = {
-          "value" : 2000,
-          "color" : colorList[1],
-          "size" : 2,
-          "opacity" : 1,
-          "top" : 0,
-          "left" : 300,
-          "rotate" : 20,
+          "value"   : Math.floor(Math.random () * 200) + 400,
+          "color"   : colorList[2],
+          "size"    : Math.floor(Math.random () * 8) + 3,
+          "opacity" : 0.5,
+          "left"    : Math.floor(Math.random () * 60) + 0,  //(0 ～ 60)
+          "rotate"  : Math.floor(Math.random () * 180) + 0, //(0 ～ 180)
         }
 
         star(stars);
