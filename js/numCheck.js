@@ -4,95 +4,31 @@ function createNumber(jsonData) {
   console.log("整形前");
   console.log(jsonData);
 
-  var arr = new Array();;
+  var arr = new Array();
 
-  if( 200 > jsonData["star-value"] || jsonData["star-value"] > 300){
-    arr.push(250);
-  } else {
-    arr.push(jsonData["star-value"]);
+  const fmt = (v, min, max) => {
+    const diff = max - min;
+    return diff / 200 * v + min;
   }
-
-  if( 3 > jsonData["star-size"] || jsonData["star-size"] > 10){
-    arr.push(6);
-  } else {
-    arr.push(jsonData["star-size"]);
-  }
-
-  if( 0.1 > jsonData["star-opacity"] || jsonData["star-opacity"] > 1){
-    arr.push(0.5);
-  } else {
-    arr.push(jsonData["star-opacity"]);
-  }
-
-  if( 0.1 > jsonData["star-color"] || jsonData["star-color"] > 1){
-    arr.push(1);
-  } else {
-    arr.push(jsonData["star-color"]);
-  }
+  //star
+  arr.push(Math.floor(fmt(jsonData["star-value"], 200, 300)));
+  arr.push(fmt(jsonData["star-size"], 3, 10));
+  arr.push(fmt(jsonData["star-opacity"], 0.1, 1));
+  arr.push(Math.floor(fmt(jsonData["star-color"], 0.1, 1)));
 
   //shootingstar
-
-  if( 20 > jsonData["shooting-speed"] || jsonData["shooting-speed"] > 50){
-    arr.push(20);
-  } else {
-    arr.push(jsonData["shooting-speed"]);
-  }
-
-  if( 0 > jsonData["shooting-size"] || jsonData["shooting-size"] > 3){
-    arr.push(3);
-  } else {
-    arr.push(jsonData["shooting-size"]);
-  }
-
-  if( 3 > jsonData["shooting-opacity"] || jsonData["shooting-opacity"] > 10){
-    arr.push(6);
-  } else {
-    arr.push(jsonData["shooting-opacity"]);
-  }
-
-  if( 0 > jsonData["shooting-color"] || jsonData["shooting-color"] > 3){
-    arr.push(0);
-  } else {
-    arr.push(jsonData["shooting-color"]);
-  }
+  arr.push(fmt(jsonData["shooting-speed"], 20, 50));
+  arr.push(Math.floor(fmt(jsonData["shooting-size"], 0, 3)));
+  arr.push(fmt(jsonData["shooting-opacity"], 0.3, 1));
+  arr.push(Math.floor(fmt(jsonData["shooting-color"], 0, 2)));
 
   //milkyway
-
-  if( 400 > jsonData["milkyway-value"] || jsonData["milkyway-value"] > 600){
-    arr.push(500);
-  } else {
-    arr.push(jsonData["milkyway-value"]);
-  }
-  
-  if( 0 > jsonData["milkyway-color"] || jsonData["milkyway-color"] > 2){
-    arr.push(1);
-  } else {
-    arr.push(jsonData["milkyway-color"]);
-  }
-
-  if( 3 > jsonData["milkyway-size"] || jsonData["milkyway-size"] > 8){
-    arr.push(5);
-  } else {
-    arr.push(jsonData["milkyway-size"]);
-  }
-
-  if( 0.3 > jsonData["milkyway-opacity"] || jsonData["milkyway-opacity"] > 1 ){
-    arr.push(0.5);
-  } else {
-    arr.push(jsonData["milkyway-opacity"]);
-  }
-
-  if( 0 > jsonData["milkyway-left"] || jsonData["milkyway-left"] > 60){
-    arr.push(40);
-  } else {
-    arr.push(jsonData["milkyway-left"]);
-  }
-
-  if( 0 > jsonData["milkyway-rotate"] || jsonData["milkyway-rotate"] > 180){
-    arr.push(jsonData["milkyway-rotate"]);
-  } else {
-    arr.push(jsonData["milkyway-rotate"]);
-  }
+  arr.push(Math.floor(fmt(jsonData["milkyway-value"], 400, 600)));
+  arr.push(Math.floor(fmt(jsonData["milkyway-color"], 0, 2)));
+  arr.push(fmt(jsonData["milkyway-size"], 3, 8));
+  arr.push(fmt(jsonData["milkyway-opacity"], 0.3, 1));
+  arr.push(Math.floor(fmt(jsonData["milkyway-opacity"], 0, 60)));
+  arr.push(Math.floor(fmt(jsonData["milkyway-rotate"], 0, 180)));
 
   console.log("整形後");
   console.log(arr);
