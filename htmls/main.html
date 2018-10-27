@@ -78,19 +78,19 @@
         }
 
         var shootings = {
-          "speed"   : 7,
-          "size"    : 10,
-          "opacity" : 0.5,
-          "color"   : colorList[0],
+          "speed"   : value[4],
+          "size"    : value[5],
+          "opacity" : value[6],
+          "color"   : colorList[value[7]],
         }
 
         var milkys = {
-          "value"   : Math.floor(Math.random () * 200) + 400,
-          "color"   : colorList[2],
-          "size"    : Math.floor(Math.random () * 8) + 3,
-          "opacity" : 0.5,
-          "left"    : Math.floor(Math.random () * 60) + 0,  //(0 ～ 60)
-          "rotate"  : Math.floor(Math.random () * 180) + 0, //(0 ～ 180)
+          "value"   : value[8],
+          "color"   : colorList[value[9]],
+          "size"    : value[10],
+          "opacity" : value[11],
+          "left"    : value[12],
+          "rotate"  : value[13],
         }
 
         star(stars);
@@ -102,13 +102,13 @@
       // const url = "http://localhost:8080/work/hal-ms-project/json/" + getData["name"] + ".json";
 
       // sample
-      const url = "http://localhost:8080/work/hal-ms-project/json/sample.json";
+      const url = "http://localhost/hal-ms-project/json/sample.json";
 
       $.getJSON(url, function(jsonData) {
         const value = createNumber(jsonData);
         someFunc(value);
       });
-    
+
     </script>
   </body>
 </html>
