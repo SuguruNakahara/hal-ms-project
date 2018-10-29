@@ -5,7 +5,8 @@ var manager,
 
 window.onload = function() {
 
- $('#visualizer').attr('height', $('.body').height() + 300);
+  $('#visualizer').attr('height', window.innerHeight);
+  $('#visualizer').attr('width', window.innerWidth);
 
   canvas = document.querySelector('canvas');
   canvasContext = canvas.getContext('2d');
@@ -24,8 +25,8 @@ window.onload = function() {
         dat = me.analysers.bgm.getByteFrequencyData(128),
         len = dat.length,
         haf = len / 2,
-        rad = 60,
-        siz = 60;
+        rad = canvas.height/12,
+        siz = 160;
 
       canvasContext.clearRect(0, 0, canvas.width, canvas.height);
       canvasContext.strokeStyle ='#0ff';
@@ -38,7 +39,7 @@ window.onload = function() {
       canvasContext.beginPath();
 
       // 円塗りつぶし
-      canvasContext.arc(0, 0, 58, 20, 80 * Math.PI / 180, true);
+      canvasContext.arc(0, 0, canvas.height/12, 7, 0, true);
       canvasContext.fill();
 
       for (var i = 0; i < len; i++) {

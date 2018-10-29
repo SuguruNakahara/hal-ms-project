@@ -1,9 +1,5 @@
 function createNumber(jsonData) {
 
-  // check
-  console.log("整形前");
-  console.log(jsonData);
-
   var arr = new Array();
 
   const fmt = (v, min, max) => {
@@ -29,12 +25,6 @@ function createNumber(jsonData) {
   arr.push(fmt(jsonData["milkyway-opacity"], 0.3, 1));
   arr.push(Math.floor(fmt(jsonData["milkyway-opacity"], 0, 60)));
   arr.push(Math.floor(fmt(jsonData["milkyway-rotate"], 0, 180)));
-
-  console.log("整形後");
-  console.log(arr);
-
-  /* sample 計算式 */
-  // Math.sin(Math.PI/jsonData["star-opacity"])
 
   return arr;
 }

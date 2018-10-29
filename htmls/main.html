@@ -63,27 +63,27 @@
           最小 50, 最大 200
           Math.floor( Math.random() * (200 + 1 - 50) ) + 50 ;
         */
-        var colorList = [
+        const colorList = [
           ["#ff0000","#ffbb00","#ffbbbb","#ff00bb"], // red
           ["#00ff00","#bbff00","#bbffbb","#00ffbb"], // green
           ["#0000ff","#bb00ff","#00bbff","#bbbbff"]  // blue
         ];
 
-        var stars = {
+        const stars = {
           "value"   : value[0],
           "size"    : value[1],
           "opacity" : value[2],
           "color"   : colorList[value[3]],
         }
 
-        var shootings = {
+        const shootings = {
           "speed"   : value[4],
           "size"    : value[5],
           "opacity" : value[6],
           "color"   : colorList[value[7]],
         }
 
-        var milkys = {
+        const milkys = {
           "value"   : value[8],
           "color"   : colorList[value[9]],
           "size"    : value[10],
@@ -97,11 +97,18 @@
         shooting(shootings);
       }
 
+      const current_path = location.href;
+      const index = current_path.indexOf("htmls");
+      const path = current_path.substring(0, index);
+
+      // url get data
       // const getData = getQuery();
-      // const url = "http://localhost:8080/work/hal-ms-project/json/" + getData["name"] + ".json";
 
       // sample
-      const url = "http://localhost:8080/work/hal-ms-project/json/sample.json";
+      const url = path + "json/sample.json";
+
+      console.log(url);
+      // const url = path + "json/" + getData["name"] + ".json";
 
       $.getJSON(url, function(jsonData) {
         const value = createNumber(jsonData);
