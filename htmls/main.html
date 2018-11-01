@@ -8,6 +8,7 @@
     <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
     <script src="../js/particles.js-master/particles.js"></script>
     <script src="../js/audioManager.min.js"></script>
+    <script src="../js/getQuery.js"></script>
     <script src="../js/audio.js"></script>
     <script src="../js/numCheck.js"></script>
     <style type="text/css">
@@ -18,7 +19,6 @@
       right: 0;
       bottom: 0;
       margin: auto;
-      z-index: 9999;
     }
     </style>
   </head>
@@ -41,22 +41,6 @@
     <script src="../js/star.js"></script>
 
     <script type="text/javascript">
-
-      function getQuery() {
-        if (1 < document.location.search.length) {
-          var query = document.location.search.substring(1);
-          var parameters = query.split('&');
-          var result = new Object();
-            for (var i = 0; i < parameters.length; i++) {
-              var element = parameters[i].split('=');
-              var paramName = decodeURIComponent(element[0]);
-              var paramValue = decodeURIComponent(element[1]);
-              result[paramName] = decodeURIComponent(paramValue);
-            }
-          return result;
-        }
-        return null;
-      }
 
       function someFunc(value) {
         /* 範囲乱数数値sample
@@ -101,13 +85,9 @@
       const index = current_path.indexOf("htmls");
       const path = current_path.substring(0, index);
 
-      // url get data
-      // const getData = getQuery();
-
-      // sample
       const url = path + "json/sample.json";
 
-      console.log(url);
+      // const getData = getQuery();
       // const url = path + "json/" + getData["name"] + ".json";
 
       $.getJSON(url, function(jsonData) {
