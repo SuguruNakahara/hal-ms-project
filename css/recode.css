@@ -1,3 +1,8 @@
+
+html{
+  user-select: none;
+}
+
 body {
   width: 100%;
   height: 100%;
@@ -11,13 +16,6 @@ body {
   animation: fadeIn 3s ease 0s 1 normal;
   -webkit-animation: fadeIn 3s ease 0s 1 normal;
 }
-
-/*
-form{
-  position: absolute;
-  z-index: 4;
-}
-*/
 
 canvas#visualizer {
   position: absolute;
@@ -39,16 +37,16 @@ canvas#visualizer {
 
 .button {
   width: 10%;
-  height: 20%;
   display: inline-block;
-  padding: 0.5% 2%;
+  padding: 0.8% 2%;
   border-style:solid;
   border-width:thin;
 /*  border-radius: 30px;*/
   border-radius: 15% / 50% ;
   color: #fff;
+  font-size: 150%;
   text-decoration: none;
-  outline: none;
+  text-align: center;
   transition: all .3s;
 }
 
@@ -64,7 +62,6 @@ canvas#visualizer {
   height: 20%;
   top: 75%;
   left: 50%;
-  margin: auto;
   text-align: center;
   transform: translate(-50%, -50%);
   z-index: 3;
