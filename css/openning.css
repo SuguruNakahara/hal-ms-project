@@ -3,6 +3,11 @@
   src: url('../font/Starjhol.ttf');
 }
 
+@font-face{
+  font-family: 'hover';
+  src:url('../font/Starjedi.ttf');
+}
+
 div{
   font-family: 'description';
 }
@@ -79,19 +84,35 @@ html{
   display: inline-block;
   text-align: center;
   border-style:solid;
-  border-width:thin;
-  font-size: 100%;
-  padding: 8% 20%;
+  border-width:medium;
+  font-size: 150%;
+  padding: 5% 20%;
   color: yellow;
   text-decoration: none;
   border-radius: 6%;
-  transition: .4s;
+  transition: .1s;
 }
 
 #skip:hover {
+  font-family: 'hover';
   background-color: yellow;
-  border-color: black;
+  border-color: yellow;
   color: black;
+}
+
+#skip:hover .arrow {
+  border-color: black black transparent transparent;
+}
+
+.arrow{
+  display:inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 10px;
+  border-style:double;
+  border-width:solid;
+  border-color: yellow yellow transparent transparent;
+  transform: rotate(45deg);
 }
 
 body {

@@ -3,59 +3,62 @@ var manager,
     canvas,
     canvasContext;
 
-window.onload = function() {
+function visualizer_design(size,line_width,stroke,fill){
+  return function(){
+    $('#visualizer').attr('height', window.innerHeight);
+    $('#visualizer').attr('width', window.innerWidth);
 
-  $('#visualizer').attr('height', window.innerHeight);
-  $('#visualizer').attr('width', window.innerWidth);
+    canvas = document.querySelector('canvas');
+    canvasContext = canvas.getContext('2d');
 
-  canvas = document.querySelector('canvas');
-  canvasContext = canvas.getContext('2d');
+    manager = (new AudioManager({
+      fps             : 60,
+      autoLoop        : false,
+      onLoaded        : function() {
+        isLoaded = true;
+        this.onEnterFrame();
+        this.play('bgm');
+        this.startLoop();
+      },
+      onEnterFrame    : function() {
+        var me  = this,
+          dat = me.analysers.bgm.getByteFrequencyData(128),
+          len = dat.length,
+          haf = len / 2,
+          rad = canvas.height/12,
+          siz = size;
 
-  manager = (new AudioManager({
-    fps             : 60,
-    autoLoop        : false,
-    onLoaded        : function() {
-      isLoaded = true;
-      this.onEnterFrame();
-      this.play('bgm');
-      this.startLoop();
-    },
-    onEnterFrame    : function() {
-      var me  = this,
-        dat = me.analysers.bgm.getByteFrequencyData(128),
-        len = dat.length,
-        haf = len / 2,
-        rad = canvas.height/12,
-        siz = 160;
+        canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+        canvasContext.strokeStyle = stroke;
 
-      canvasContext.clearRect(0, 0, canvas.width, canvas.height);
-      canvasContext.strokeStyle ='#0ff';
-      
-      canvasContext.fillStyle ='rgb(0, 255, 255)';
-      canvasContext.lineWidth = 1.0;
+        canvasContext.fillStyle = fill;
+        canvasContext.lineWidth = line_width;
 
-      canvasContext.save();
-      canvasContext.translate(canvas.width/2, canvas.height/2);
-      canvasContext.beginPath();
+        canvasContext.save();
+        canvasContext.translate(canvas.width/2, canvas.height/2);
+        canvasContext.beginPath();
 
-      // 円塗りつぶし
-      canvasContext.arc(0, 0, canvas.height/12, 7, 0, true);
-      canvasContext.fill();
+        // 円塗りつぶし
+        canvasContext.arc(0, 0, canvas.height/12, 7, 0, true);
+        canvasContext.fill();
 
-      for (var i = 0; i < len; i++) {
-        canvasContext.moveTo(rad+(siz*Math.floor((dat[i]/255)*100)/100),0);
-        canvasContext.lineTo(rad-1,0);
-        canvasContext.rotate(Math.PI/haf);
+        for (var i = 0; i < len; i++) {
+          canvasContext.moveTo(rad+(siz*Math.floor((dat[i]/255)*100)/100),0);
+          canvasContext.lineTo(rad-1,0);
+          canvasContext.rotate(Math.PI/haf);
+        }
+
+        canvasContext.stroke();
+        canvasContext.translate(-canvas.width/2, -canvas.height/2);
+        canvasContext.restore();
       }
+    })).init();
 
-      canvasContext.stroke();
-      canvasContext.translate(-canvas.width/2, -canvas.height/2);
-      canvasContext.restore();
-    }
-  })).init();
+    manager.load({
+      bgm: '../audio/justUs.m4a'
+      // bgm: '../audio/sample.mp3'
+    });
+  }
+}
 
-  manager.load({
-    bgm: '../audio/justUs.m4a'
-    // bgm: '../audio/sample.mp3'
-  });
-};
+window.onload = visualizer_design(300,3.0,'#f00','rgb(128, 0, 128)');
