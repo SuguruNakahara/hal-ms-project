@@ -36,7 +36,7 @@
       margin: auto;
       background-color: white;
       z-index: 10;
-      -webkit-animation: fadein 3s linear 0s 1;
+      -webkit-animation: fadein 1.5s linear 0s 1;
     }
     #graph {
       max-width: 60%;
@@ -98,7 +98,7 @@
             document.location.href = "./title.html";
           } else {
             disp = document.getElementById("graph-container").style.display = "block";
-            displayGraph();
+            displayGraph(value);
           }
         }
       }
@@ -151,39 +151,30 @@
       // const getData = getQuery();
       // const url = path + "json/" + getData["name"] + ".json";
 
+      let value;
       $.getJSON(url, function(jsonData) {
-        const value = createNumber(jsonData);
+        value = createNumber(jsonData);
         someFunc(value);
       });
 
-      function displayGraph() {
+      function displayGraph(value) {
         var ctx = document.getElementById('graph').getContext('2d');
         ctx.canvas.height =  window.innerHeight/3;
         var myChart = new Chart(ctx, {
           type: 'polarArea',
           data: {
-            labels: ["M", "T", "W", "T", "F", "S", "S"],
+            labels: ["RED", "YELLOW", "GREEN", "CYAN", "BLUE", "MAGENTA"],
             datasets: [{
               backgroundColor: [
-                "#2ecc71",
-                "#3498db",
-                "#95a5a6",
-                "#9b59b6",
-                "#f1c40f",
-                "#e74c3c",
-                "#34495e"
+                "red",
+                "yellow",
+                "green",
+                "cyan",
+                "blue",
+                "magenta"
               ],
-              borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 1,
-              data:[ 26, 19, 3, 17, 28, 24, 7]
+              borderWidth: 5,
+              data:[ value[6], value[1], value[2], value[3], value[4], value[5]]
             }]
           }
         });
