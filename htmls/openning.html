@@ -29,5 +29,23 @@
       <a href="#" onclick="frameClick();" onMouseDown="return false;" onSelectStart="return false" id=skip>skip<span class="arrow"></span></a>
     </div>
     <script src="../js/title.js"></script>
+    <script type="text/javascript">
+      window.addEventListener("keydown", handleKeydown);
+      function handleKeydown(event){
+        if (event["key"] == "Enter") {
+          document.getElementById("skip").setAttribute(
+            "style",
+            "font-family: 'hover'; color: #000; background-color: yellow; border-color: yellow;"
+          );
+        }
+      }
+
+      window.addEventListener("keyup", handleKeyup);
+      function handleKeyup(event){
+        if (event["key"] == "Enter") {
+          document.getElementById("skip").click();
+        }
+      }
+    </script>
   </body>
 </html>
