@@ -2,10 +2,10 @@ function milky(milkys) {
 
   var box = document.getElementById('milkyway');
   if(milkys.rotate < 90){
-    box.style.height = milkys.rotate + (30 - (milkys.left % 30)) + 100 + '%';
+    box.style.height = milkys.rotate  + 120 + '%';
     box.style.top = "-" + milkys.rotate / 2 - 1 + '%';
   }else if(90 <= milkys.rotate){
-    box.style.height = milkys.rotate + (30 - (milkys.left % 30)) + 100 + '%';
+    box.style.height = 90 - (milkys.rotate % 90) + 120 + '%';
     box.style.top = "-" + 90 - (milkys.rotate % 90) / 2 - 1 + '%';
   }
   box.style.left = 20 + milkys.left + '%';
@@ -129,7 +129,7 @@ function milky(milkys) {
       }
     }
   );
-  
+
   // var box = document.getElementById('milkyway');
   // box.style.top = milkys.top + 'px';
   // box.style.left = milkys.left + 'px';

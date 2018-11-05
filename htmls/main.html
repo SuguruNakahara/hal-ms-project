@@ -37,7 +37,7 @@
     <div id="milkyway"></div>
 
     <script src="../js/set.js"></script>
-    <script src="../js/anim.js"></script>
+    <script style="margin:0 100px;" src="../js/anim.js"></script>
     <script src="../js/star.js"></script>
 
     <script type="text/javascript">
@@ -92,6 +92,9 @@
           "left"    : value[12],
           "rotate"  : value[13],
         }
+
+        console.log("left:" + milkys.left);
+        console.log("rotate:" + milkys.rotate);
 
         star(stars);
         milky(milkys);
