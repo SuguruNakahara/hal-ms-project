@@ -49,6 +49,7 @@
 
     canvas#visualizer {
       position: absolute;
+      background: rgba(0,0,0,0);
       top: 0;
       left: 0;
       right: 0;
@@ -59,14 +60,14 @@
     </style>
   </head>
   <body>
-    
+        <!-- audio sun -->
+    <canvas id="visualizer"></canvas>
     <div id="back"></div>
 
     <!-- shooting star -->
     <div id="particles-js"></div>
 
-    <!-- audio sun -->
-    <canvas id="visualizer"></canvas>
+
 
     <!-- planetarium star's -->
     <div id="particles-star"></div>
@@ -100,6 +101,19 @@
             disp = document.getElementById("graph-container").style.display = "block";
             displayGraph(value);
           }
+      
+      function getQuery() {
+        if (1 < document.location.search.length) {
+          var query = document.location.search.substring(1);
+          var parameters = query.split('&');
+          var result = new Object();
+            for (var i = 0; i < parameters.length; i++) {
+              var element = parameters[i].split('=');
+              var paramName = decodeURIComponent(element[0]);
+              var paramValue = decodeURIComponent(element[1]);
+              result[paramName] = decodeURIComponent(paramValue);
+            }
+          return result;
         }
       }
 
@@ -136,10 +150,18 @@
           "left"    : value[12],
           "rotate"  : value[13],
         }
+        
+        const sun = {
+          "value"   : value[14],
+          "size"    : value[15],
+          "left"    : value[16],
+          "fill"    : value[17]
+        }
 
         star(stars);
         milky(milkys);
         shooting(shootings);
+        
       }
 
       const current_path = location.href;
@@ -180,6 +202,54 @@
         });
       }
 
+      //console.log(url);
+      // const url = path + "json/" + getData["name"] + ".json";
+
+//      Promise.resolve
+//      new Promise(resolve => {
+//          window.addEventListener("load", () => {
+//            console.log("aaar");
+//            resolve()
+//          })
+//        }).then(() => {
+//        setTimeout(() => visualizer_design(100,1.0,'#0f0','rgb(0, 255, 0)'), 1000);
+//                      console.log("aaa");
+//        })
+      
+      
+      Promise.all([
+        new Promise(resolve => window.addEventListener("load", () => resolve())),
+        fetch(url)])
+      .then(it => {
+//        console.log(it.text())
+        return it[1].json()
+      })
+      .then(it => {
+        console.log("aaaaass");
+        const json = it;
+        console.log(it);
+        const value = createNumber(json);
+        const test = createNumber(json);
+        someFunc(test);
+        visualizer_design(it["visualizer-size"],it["visualizer-line_width"],it["visualizer-stroke"],it["visualizer-fill"])();
+      })
+
+      
+//      $.when(
+//        $.getJSON(url, function(jsonData) {
+//          const value = createNumber(jsonData);
+//          test = createNumber(jsonData);
+//        }), window.onload = visualizer_design(100,1.0,'#0f0','rgb(0, 255, 0)')
+//      ).done(function(){
+//        console.log("done")
+//        console.log(aa);
+//        someFunc(test);
+//
+//      },
+//      ).fail(function(){
+//        console.log("error");
+//      });
+      
     </script>
   </body>
 </html>

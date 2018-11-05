@@ -10,7 +10,6 @@ function visualizer_design(size,line_width,stroke,fill){
 
     canvas = document.querySelector('canvas');
     canvasContext = canvas.getContext('2d');
-
     manager = (new AudioManager({
       fps             : 60,
       autoLoop        : false,
@@ -60,5 +59,3 @@ function visualizer_design(size,line_width,stroke,fill){
     });
   }
 }
-
-window.onload = visualizer_design(300,3.0,'#f00','rgb(128, 0, 128)');

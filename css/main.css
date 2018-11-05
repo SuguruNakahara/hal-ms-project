@@ -32,6 +32,7 @@ body {
 canvas {
   display: block;
   vertical-align: bottom;
+  background: rgba(0,0,0,0);
 } /* ---- particles.js container ---- */
 
 #particles-js {
