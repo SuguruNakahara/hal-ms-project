@@ -5,10 +5,14 @@ var manager,
 
 function visualizer_design(size,line_width,stroke,fill){
   return function(){
+
     $('#visualizer').attr('height', window.innerHeight);
     $('#visualizer').attr('width', window.innerWidth);
 
-    canvas = document.querySelector('canvas');
+    canvas = document.querySelector('#visualizer');
+
+    // console.log(size);
+
     canvasContext = canvas.getContext('2d');
     manager = (new AudioManager({
       fps             : 60,
