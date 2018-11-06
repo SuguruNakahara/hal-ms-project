@@ -23,7 +23,7 @@ function createNumber(jsonData) {
   arr.push(Math.floor(fmt(jsonData["milkyway-color"], 0, 2)));
   arr.push(fmt(jsonData["milkyway-size"], 3, 8));
   arr.push(fmt(jsonData["milkyway-opacity"], 0.3, 1));
-  arr.push(Math.floor(fmt(jsonData["milkyway-opacity"], 0, 60)));
+  arr.push(Math.floor(fmt(jsonData["milkyway-left"], 0, 60)));
   arr.push(Math.floor(fmt(jsonData["milkyway-rotate"], 0, 180)));
 
   return arr;

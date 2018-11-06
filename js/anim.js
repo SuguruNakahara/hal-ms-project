@@ -1,15 +1,26 @@
 function milky(milkys) {
 
   var box = document.getElementById('milkyway');
-  if(milkys.rotate < 90){
-    box.style.height = milkys.rotate + (30 - (milkys.left % 30)) + 100 + '%';
-    box.style.top = "-" + milkys.rotate / 2 - 1 + '%';
-  }else if(90 <= milkys.rotate){
-    box.style.height = milkys.rotate + (30 - (milkys.left % 30)) + 100 + '%';
-    box.style.top = "-" + 90 - (milkys.rotate % 90) / 2 - 1 + '%';
+
+  let setHeight;
+
+  if(60 < milkys.rotate && milkys.rotate < 121) {
+    setHeight = 200;
+    box.style.top = "-" + milkys.rotate/2 + '%';
+    box.style.left = 50 - milkys.left + milkys.left + '%';
+
+  } else {
+    if(milkys.rotate < 61){
+      setHeight = milkys.rotate * 2 + 100 ;
+    } else if( 120 < milkys.rotate) {
+      setHeight = milkys.rotate + (180 - milkys.rotate) + 110;
+    }
+    box.style.top = "-" + milkys.rotate + '%';
+    box.style.left = milkys.left + '%';
   }
-  box.style.left = 20 + milkys.left + '%';
-  box.style.transform = 'rotate('+milkys.rotate +'deg)';
+
+  box.style.height = setHeight + '%';
+  box.style.transform = 'rotate('+ milkys.rotate + 'deg)';
 
   particlesJS('milkyway',
     {
@@ -129,10 +140,4 @@ function milky(milkys) {
       }
     }
   );
-  
-  // var box = document.getElementById('milkyway');
-  // box.style.top = milkys.top + 'px';
-  // box.style.left = milkys.left + 'px';
-  // box.style.transform = "rotate(" + milkys.rotate + "deg)";
-
 }
