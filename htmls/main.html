@@ -120,9 +120,12 @@
 
       function someFunc(value) {
         const colorList = [
-          ["#ff0000","#ffbb00","#ffbbbb","#ff00bb"], // red
-          ["#00ff00","#bbff00","#bbffbb","#00ffbb"], // green
-          ["#0000ff","#bb00ff","#00bbff","#bbbbff"]  // blue
+          ["#ff0000","#ffbbbb","#ffbb00","#ff00bb"], // red
+          ["#00ff00","#bbff00","#bbffbb","#00ffbb"], // orange
+          ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // yellow
+          ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // green
+          ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // blue
+          ["#ff00ff","#ff00ff","#ff00ff","#ff00ff"]  // purple
         ];
 
         const stars = {
@@ -172,15 +175,15 @@
         var myChart = new Chart(ctx, {
           type: 'polarArea',
           data: {
-            labels: ["RED", "YELLOW", "GREEN", "CYAN", "BLUE", "MAGENTA"],
+            labels: ["RED", "ORANGE", "YELLOW", "GREEN", "BLUE", "PURPLE"],
             datasets: [{
               backgroundColor: [
                 "red",
+                "orange",
                 "yellow",
                 "green",
-                "cyan",
                 "blue",
-                "magenta"
+                "purple"
               ],
               borderWidth: 5,
               data:[ value[6], value[1], value[2], value[3], value[4], value[5]]

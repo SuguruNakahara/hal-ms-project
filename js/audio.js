@@ -11,8 +11,6 @@ function visualizer_design(size,line_width,stroke,fill){
 
     canvas = document.querySelector('#visualizer');
 
-    // console.log(size);
-
     canvasContext = canvas.getContext('2d');
     manager = (new AudioManager({
       fps             : 30,
@@ -41,7 +39,6 @@ function visualizer_design(size,line_width,stroke,fill){
         canvasContext.translate(canvas.width/2, canvas.height/2);
         canvasContext.beginPath();
 
-        // 円塗りつぶし
         canvasContext.arc(0, 0, canvas.height/12, 7, 0, true);
         canvasContext.fill();
 
