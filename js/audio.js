@@ -15,7 +15,7 @@ function visualizer_design(size,line_width,stroke,fill){
 
     canvasContext = canvas.getContext('2d');
     manager = (new AudioManager({
-      fps             : 60,
+      fps             : 30,
       autoLoop        : false,
       onLoaded        : function() {
         isLoaded = true;

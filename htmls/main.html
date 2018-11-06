@@ -55,19 +55,19 @@
       right: 0;
       bottom: 0;
       margin: auto;
-      z-index: 1;
     }
 
     </style>
   </head>
   <body>
-        <!-- audio sun -->
-    <canvas id="visualizer"></canvas>
+
     <div id="back"></div>
+
+    <!-- audio sun -->
+    <canvas id="visualizer"></canvas>
 
     <!-- shooting star -->
     <div id="particles-js"></div>
-
 
 
     <!-- planetarium star's -->
@@ -77,18 +77,16 @@
     <div id="milkyway"></div>
 
     <div id="graph-container">
-    <canvas id="graph"></canvas>
-    <div>
-      <h1>解説</h1>
-      <p>解説テキスト</p>      
-    </div>
-
+      <canvas id="graph"></canvas>
+      <div>
+        <h1>解説</h1>
+        <p>解説テキスト</p>
+      </div>
     </div>
 
     <script src="../js/set.js"></script>
     <script src="../js/anim.js"></script>
     <script src="../js/star.js"></script>
-
     <script type="text/javascript">
 
       let disp = document.getElementById("graph-container").style.display = "none";
@@ -121,10 +119,6 @@
       }
 
       function someFunc(value) {
-        /* 範囲乱数数値sample
-          最小 50, 最大 200
-          Math.floor( Math.random() * (200 + 1 - 50) ) + 50 ;
-        */
         const colorList = [
           ["#ff0000","#ffbb00","#ffbbbb","#ff00bb"], // red
           ["#00ff00","#bbff00","#bbffbb","#00ffbb"], // green
@@ -154,25 +148,15 @@
           "rotate"  : value[13],
         }
         
-        const sun = {
-          "value"   : value[14],
-          "size"    : value[15],
-          "left"    : value[16],
-          "fill"    : value[17]
-        }
-
         star(stars);
         milky(milkys);
         shooting(shootings);
-        
       }
 
       const current_path = location.href;
       const index = current_path.indexOf("htmls");
       const path = current_path.substring(0, index);
-
       const url = path + "json/sample.json";
-
       // const getData = getQuery();
       // const url = path + "json/" + getData["name"] + ".json";
 
@@ -214,8 +198,7 @@
       .then(it => {
         const json = it;
         const value = createNumber(json);
-        const test = createNumber(json);
-        someFunc(test);
+        someFunc(value);
         visualizer_design(it["visualizer-size"],it["visualizer-line_width"],it["visualizer-stroke"],it["visualizer-fill"])();
       })
       
