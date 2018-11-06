@@ -1,11 +1,21 @@
 function shooting(shootings) {
+
+const colorList = [
+  ["#A33643"], // red
+  ["#AA7539"], // orange
+  ["#A9AA39"], // yellow
+  ["#3C8D2F"], // green
+  ["#333577"], // blue
+  ["#68266F"]  // purple
+];
+
 particlesJS("particles-star", {
   particles: {
     number: {
       value: 1,
-      density: { enable: true, value_area: 5681.8630197523635 }
+      density: { enable: true, value_area: 1500 }
     },
-    color: { "value": shootings.color },
+    color: { "value": colorList[shootings.color] },
     shape: {
       type: "star",
       stroke: { width: 0, color: "#000000" },
@@ -67,6 +77,6 @@ particlesJS("particles-star", {
   state: {
     status: "star"
   },
-  retina_detect: false
+  retina_detect: true
 });
 }
