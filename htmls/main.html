@@ -90,7 +90,7 @@
     <script type="text/javascript">
 
       let disp = document.getElementById("graph-container").style.display = "none";
-      window.addEventListener("keydown", handleKeydown);
+      window.addEventListener("keyup", handleKeydown);
       function handleKeydown(event){
         if (event["key"] == "Enter") {
           if (disp == "block") {
