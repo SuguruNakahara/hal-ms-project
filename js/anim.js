@@ -1,7 +1,6 @@
 function milky(milkys) {
 
-  var box = document.getElementById('milkyway');
-
+  const box = document.getElementById('milkyway');
   let setHeight;
 
   if(60 < milkys.rotate && milkys.rotate < 121) {
@@ -28,7 +27,7 @@ function milky(milkys) {
         "number": {
           "value": milkys.value,
           "density": {
-            "enable": true,
+            "enable": false,
             "value_area": 800
           }
         },
@@ -42,7 +41,7 @@ function milky(milkys) {
             "color": "#000000"
           },
           "polygon": {
-            "nb_sides": 5
+            "nb_sides": 6
           },
           "image": {
             "src": "img/github.svg",
@@ -65,7 +64,7 @@ function milky(milkys) {
           "random": true,
           "anim": {
             "enable": true,
-            "speed": 5,
+            "speed": 3,
             "size_min": 0.1,
             "sync": false
           }
@@ -102,7 +101,7 @@ function milky(milkys) {
             "enable": false,
             "mode": "push"
           },
-          "resize": true
+          "resize": false
         },
         "modes": {
           "grab": {
@@ -140,4 +139,7 @@ function milky(milkys) {
       }
     }
   );
+
+  const milkywayDisp = document.querySelector('#milkyway canvas');
+  milkywayDisp.style.padding = 10 + '%';
 }

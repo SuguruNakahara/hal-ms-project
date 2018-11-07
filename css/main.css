@@ -52,7 +52,7 @@ canvas {
 }
 
 #milkyway {
-  width: 7%;               /* 幅指定 */
+  width: 9%;               /* 幅指定 */
   height: 100%;               /* 高さ指定 */
   position:absolute;
 }

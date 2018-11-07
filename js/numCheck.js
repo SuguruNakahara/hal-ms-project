@@ -19,7 +19,7 @@ function createNumber(jsonData) {
   arr.push(Math.floor(fmt(jsonData["shooting-color"], 0, 2)));
 
   //milkyway
-  arr.push(Math.floor(fmt(jsonData["milkyway-value"], 400, 600)));
+  arr.push(Math.floor(fmt(jsonData["milkyway-value"], 100, 400)));
   arr.push(Math.floor(fmt(jsonData["milkyway-color"], 0, 2)));
   arr.push(fmt(jsonData["milkyway-size"], 3, 8));
   arr.push(fmt(jsonData["milkyway-opacity"], 0.3, 1));
