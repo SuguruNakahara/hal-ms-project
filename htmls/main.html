@@ -57,6 +57,25 @@
       margin: auto;
     }
 
+    .star {
+      animation: kirakira 8s linear;
+      display: inline-block;
+      height: 1em;
+      line-height: 1em;
+      position: fixed;
+      top: -1em;
+      z-index: 1000;
+    }
+
+    @keyframes kirakira {
+      0% {
+        transform:translateY(0) rotateY(0);
+      }
+      100% {
+        transform:translateY(calc(100vh + 1em)) rotateZ(1800deg);
+      }
+    }
+
     </style>
   </head>
   <body>
@@ -69,6 +88,7 @@
     <!-- shooting star -->
     <div id="particles-js"></div>
 
+    <div id="shootingStar" class="star">★</div>>
 
     <!-- planetarium star's -->
     <div id="particles-star"></div>
@@ -87,6 +107,7 @@
     <script src="../js/set.js"></script>
     <script src="../js/anim.js"></script>
     <script src="../js/star.js"></script>
+    <script src="../js/shootingStar.js"></script>
     <script type="text/javascript">
 
       let disp = document.getElementById("graph-container").style.display = "none";
@@ -151,9 +172,10 @@
           "rotate"  : value[13],
         }
         
+        starMaker(1);
         star(stars);
         milky(milkys);
-        shooting(shootings);
+        // shooting(shootings);
       }
 
       const current_path = location.href;
@@ -200,22 +222,7 @@
         visualizer_design(it["visualizer-size"],it["visualizer-line_width"],it["visualizer-stroke"],it["visualizer-fill"])();
         return value
       })
-      
-//      $.when(
-//        $.getJSON(url, function(jsonData) {
-//          const value = createNumber(jsonData);
-//          test = createNumber(jsonData);
-//        }), window.onload = visualizer_design(100,1.0,'#0f0','rgb(0, 255, 0)')
-//      ).done(function(){
-//        console.log("done")
-//        console.log(aa);
-//        someFunc(test);
-//
-//      },
-//      ).fail(function(){
-//        console.log("error");
-//      });
-      
+            
     </script>
   </body>
 </html>
