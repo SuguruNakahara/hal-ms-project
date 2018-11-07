@@ -163,12 +163,6 @@
       // const getData = getQuery();
       // const url = path + "json/" + getData["name"] + ".json";
 
-      let value;
-      $.getJSON(url, function(jsonData) {
-        value = createNumber(jsonData);
-        someFunc(value);
-      });
-
       function displayGraph(value) {
         var ctx = document.getElementById('graph').getContext('2d');
         ctx.canvas.height =  window.innerHeight/3;
@@ -191,7 +185,8 @@
           }
         });
       }
-      
+
+      let value;
       Promise.all([
         new Promise(resolve => window.addEventListener("load", () => resolve())),
         fetch(url)])
@@ -200,9 +195,10 @@
       })
       .then(it => {
         const json = it;
-        const value = createNumber(json);
+        value = createNumber(json);
         someFunc(value);
         visualizer_design(it["visualizer-size"],it["visualizer-line_width"],it["visualizer-stroke"],it["visualizer-fill"])();
+        return value
       })
       
 //      $.when(
