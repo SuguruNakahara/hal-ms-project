@@ -85,13 +85,10 @@
     <!-- audio sun -->
     <canvas id="visualizer"></canvas>
 
-    <!-- shooting star -->
+    <!-- planetarium star's -->
     <div id="particles-js"></div>
 
     <div id="shootingStar" class="star">★</div>>
-
-    <!-- planetarium star's -->
-    <div id="particles-star"></div>
 
     <!-- milky way -->
     <div id="milkyway"></div>
@@ -106,7 +103,6 @@
 
     <script src="../js/set.js"></script>
     <script src="../js/anim.js"></script>
-    <script src="../js/star.js"></script>
     <script src="../js/shootingStar.js"></script>
     <script type="text/javascript">
 
@@ -156,26 +152,18 @@
           "color"   : colorList[value[3]],
         }
 
-        const shootings = {
-          "speed"   : value[4],
-          "size"    : value[5],
-          "opacity" : value[6],
-          "color"   : value[7],
-        }
-
         const milkys = {
-          "value"   : value[8],
-          "color"   : colorList[value[9]],
-          "size"    : value[10],
-          "opacity" : value[11],
-          "left"    : value[12],
-          "rotate"  : value[13],
+          "value"   : value[4],
+          "color"   : colorList[value[5]],
+          "size"    : value[6],
+          "opacity" : value[7],
+          "left"    : value[8],
+          "rotate"  : value[9],
         }
         
         starMaker(1);
         star(stars);
         milky(milkys);
-        // shooting(shootings);
       }
 
       const current_path = location.href;
@@ -220,7 +208,6 @@
         value = createNumber(json);
         someFunc(value);
         visualizer_design(it["visualizer-size"],it["visualizer-line_width"],it["visualizer-stroke"],it["visualizer-fill"])();
-        return value
       })
             
     </script>
