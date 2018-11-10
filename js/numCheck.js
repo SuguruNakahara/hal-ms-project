@@ -7,7 +7,7 @@ function createNumber(jsonData) {
     return diff / 200 * v + min;
   }
   //star
-  arr.push(Math.floor(fmt(jsonData["star-value"], 200, 300)));
+  arr.push(Math.floor(fmt(jsonData["star-value"], 100, 500)));
   arr.push(fmt(jsonData["star-size"], 3, 8));
   arr.push(fmt(jsonData["star-opacity"], 0.1, 1));
   arr.push(Math.floor(fmt(jsonData["star-color"], 0.1, 1)));
