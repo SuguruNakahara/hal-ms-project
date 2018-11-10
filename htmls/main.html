@@ -14,6 +14,10 @@
     <script src="../js/numCheck.js"></script>
     <style type="text/css">
 
+    body {
+      user-select: none;
+    }
+
     #container {
       position: absolute;
       top: 0;
@@ -30,10 +34,27 @@
       -webkit-animation: fadeIn 2s ease 0s 1 normal;
     }
 
+    #container * {
+      overflow: hidden;
+    }
+
     .item {
       position: relative;
       width: 100%;
-      height: 100%;
+    }
+
+    .item h1 {
+      font-size: 3rem;
+      border-bottom: solid .3rem red;
+      color : red;
+    }
+
+    .item p {
+      font-size: 2rem;
+    }
+
+    .graphText {
+      border: 1rem;
     }
 
     canvas#visualizer {
@@ -73,10 +94,11 @@
 
     <div id="container">
       <canvas class="item" id="graph"></canvas>
-      <div class="item">
-        <div style="margin: 20% 5%">
-        <h1>赤</h1>
-        <p>あなたの声は全体的に赤が強く、とても情熱的な声をしています。<br>あなたの声は人に元気を与え、物事に対しての意欲を高めることのできる声です。</p>
+      <div class="item graphText">
+        <div>
+          <h1>赤</h1>
+          <p>あなたの声は全体的に赤が強く、とても情熱的な声をしています。<br>あなたの声は人に元気を与え、物事に対しての意欲を高めることのできる声です。</p>
+          <img src="../img/illust.png">
         </div>
       </div>
     </div>
@@ -98,6 +120,8 @@
     <script type="text/javascript">
 
       const container = document.getElementById("container");
+      const graphCanvas = document.querySelector('#container canvas');
+      container.style.maxHeight = container.clientHeight + "px";
       let disp = container.style.opacity = 0;
       window.addEventListener("keyup", handleKeydown);
       function handleKeydown(event){
@@ -106,8 +130,8 @@
             document.location.href = "./title.html";
           } else {
             disp = container.style.opacity = 1;
-            let graphCanvas = document.querySelector('#container canvas');
             graphCanvas.style.maxWidth = graphCanvas.clientWidth + "px";
+            graphCanvas.style.minWidth = graphCanvas.clientWidth + "px";
             displayGraph(value);
           }
         }
@@ -168,7 +192,7 @@
 
       function displayGraph(value) {
         var ctx = document.getElementById('graph').getContext('2d');
-        ctx.canvas.height =  window.innerHeight/3;
+        ctx.canvas.height =  window.innerHeight/8;
         var myChart = new Chart(ctx, {
           type: 'polarArea',
           data: {
