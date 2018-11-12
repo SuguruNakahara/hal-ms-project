@@ -19,7 +19,7 @@ div{
   left:0;
   right:0;
   overflow:hidden;
-  font-size:190%;
+  font-size:2.5vw;
   text-align:center;
   font-family:sans-serif;
   background-color: rgba(0,0,0,0);
@@ -56,7 +56,7 @@ html:after{
   left:0;
   right:0;
   transform-origin:50% 100%;
-  transform:perspective(300px) rotateX(4deg); /* 角度 */
+  transform:perspective(300px) rotateX(10deg); /* 角度 */
   background-color: rgba(0,0,0,0);
 }
 
