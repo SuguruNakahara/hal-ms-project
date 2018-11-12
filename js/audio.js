@@ -3,6 +3,8 @@ var manager,
     canvas,
     canvasContext;
 
+const colors = ["#00ff00","#ff0000","#0000ff"];
+
 function visualizer_design(size,line_width,fill){
   return function(){
 
@@ -30,9 +32,9 @@ function visualizer_design(size,line_width,fill){
           siz = size;
 
         canvasContext.clearRect(0, 0, canvas.width, canvas.height);
-        canvasContext.strokeStyle = fill;
+        canvasContext.strokeStyle = colors[fill];
 
-        canvasContext.fillStyle = fill;
+        canvasContext.fillStyle = colors[fill];
         canvasContext.lineWidth = line_width;
 
         canvasContext.save();

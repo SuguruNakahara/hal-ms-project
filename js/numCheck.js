@@ -20,5 +20,9 @@ function createNumber(jsonData) {
   arr.push(Math.floor(fmt(jsonData["milkyway-left"], 0, 60)));
   arr.push(Math.floor(fmt(jsonData["milkyway-rotate"], 0, 180)));
 
+  arr.push(Math.floor(fmt(jsonData["visualizer-size"], 90, 120)));
+  arr.push(Math.floor(fmt(jsonData["visualizer-line_width"], 1, 2)));
+  arr.push(Math.floor(fmt(jsonData["visualizer-fill"], 0, 2)));
+
   return arr;
 }
