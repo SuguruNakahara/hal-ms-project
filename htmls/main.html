@@ -43,18 +43,25 @@
       width: 100%;
     }
 
-    .item h1 {
-      font-size: 3rem;
-      border-bottom: solid .3rem red;
-      color : red;
-    }
-
-    .item p {
-      font-size: 2rem;
-    }
-
     .graphText {
-      border: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .graphText p,
+    .graphText img {
+      width: 80%;
+      font-size: 2vw;
+      flex-shrink: 2;
+      padding: 0 10%;
+    }
+
+    .graphText h1 {
+      width: 80%;
+      padding: 0 10%;
+      font-size: 2.3vw;
+      flex-shrink: 1;
+      text-align: center;
     }
 
     canvas#visualizer {
@@ -96,11 +103,9 @@
     <div id="container">
       <canvas class="item" id="graph"></canvas>
       <div class="item graphText">
-        <div>
-          <h1>赤</h1>
-          <p>あなたの声は全体的に赤が強く、とても情熱的な声をしています。<br>あなたの声は人に元気を与え、物事に対しての意欲を高めることのできる声です。</p>
-          <img src="../img/illust.png">
-        </div>
+        <h1>赤</h1>
+        <p>あなたの声は全体的に赤が強く、とても情熱的な声をしています。<br>あなたの声は人に元気を与え、物事に対しての意欲を高めることのできる声です。</p>
+        <img src="../img/illust.png">
       </div>
     </div>
 
