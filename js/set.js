@@ -1,4 +1,14 @@
 function star(stars) {
+
+const colors = [
+  ["#ff0000","#ffbbbb","#ffbb00","#ff00bb"], // red
+  ["#00ff00","#bbff00","#bbffbb","#00ffbb"], // orange
+  ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // green
+  ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // blue
+  ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // purple
+  ["#ff00ff","#ff00ff","#ff00ff","#ff00ff"]  // yellow
+];
+
 particlesJS('particles-js',
   {
     "particles": {
@@ -10,7 +20,7 @@ particlesJS('particles-js',
         }
       },
       "color": {
-        "value": stars.color
+        "value": colors[stars.color]
       },
       "shape": {
         "type": ["circle", "triangle","star","polygon"],
