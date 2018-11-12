@@ -57,7 +57,11 @@ function visualizer_design(size,line_width,fill){
     })).init();
 
     manager.load({
-      bgm: '../audio/justUs.m4a'
+      bgm: {
+        path    : '../audio/justUs.m4a',
+        loop    : true,
+        sound   : false
+      }
       // bgm: '../audio/sample.mp3'
     });
   }

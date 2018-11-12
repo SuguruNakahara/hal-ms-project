@@ -12,6 +12,7 @@
     <script src="../js/getQuery.js"></script>
     <script src="../js/audio.js"></script>
     <script src="../js/numCheck.js"></script>
+    <script src="../js/setContent.js"></script>
     <style type="text/css">
 
     body {
@@ -103,9 +104,9 @@
     <div id="container">
       <canvas class="item" id="graph"></canvas>
       <div class="item graphText">
-        <h1>赤</h1>
-        <p>あなたの声は全体的に赤が強く、とても情熱的な声をしています。<br>あなたの声は人に元気を与え、物事に対しての意欲を高めることのできる声です。</p>
-        <img src="../img/illust.png">
+        <h1></h1>
+        <p></p>
+        <img src="#">
       </div>
     </div>
 
@@ -227,6 +228,7 @@
         return it[1].json()
       })
       .then(it => {
+        setContent();
         const json = it;
         value = createNumber(json);
         someFunc(value);
