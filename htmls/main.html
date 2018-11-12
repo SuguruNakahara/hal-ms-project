@@ -13,38 +13,48 @@
     <script src="../js/audio.js"></script>
     <script src="../js/numCheck.js"></script>
     <style type="text/css">
-    @-webkit-keyframes fadein {
-      0%{
-        opacity:0;
-      }
-      75%{
-        opacity:0.5;
-      }
-      100% {
-        opacity:1;
-      }
+
+    body {
+      user-select: none;
     }
 
-    #graph-container {
+    #container {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      max-width: 80%;
-      max-height: 80%;
+      display: flex;
+      width: 80%;
+      height: 80%;
       margin: auto;
-      background-color: white;
-      z-index: 10;
-      -webkit-animation: fadein 1.5s linear 0s 1;
+      z-index: 100;
+      opacity: 0;
+      background: white;
+      -webkit-animation: fadeIn 2s ease 0s 1 normal;
     }
-    #graph {
-      max-width: 60%;
-      float: left;
+
+    #container * {
+      overflow: hidden;
     }
-    #graph-container div {
-      max-width: 60%;
-      float: left;
+
+    .item {
+      position: relative;
+      width: 100%;
+    }
+
+    .item h1 {
+      font-size: 3rem;
+      border-bottom: solid .3rem red;
+      color : red;
+    }
+
+    .item p {
+      font-size: 2rem;
+    }
+
+    .graphText {
+      border: 1rem;
     }
 
     canvas#visualizer {
@@ -83,6 +93,17 @@
 
     <div id="back"></div>
 
+    <div id="container">
+      <canvas class="item" id="graph"></canvas>
+      <div class="item graphText">
+        <div>
+          <h1>赤</h1>
+          <p>あなたの声は全体的に赤が強く、とても情熱的な声をしています。<br>あなたの声は人に元気を与え、物事に対しての意欲を高めることのできる声です。</p>
+          <img src="../img/illust.png">
+        </div>
+      </div>
+    </div>
+
     <!-- audio sun -->
     <canvas id="visualizer"></canvas>
 
@@ -94,28 +115,24 @@
     <!-- milky way -->
     <div id="milkyway"></div>
 
-    <div id="graph-container">
-      <canvas id="graph"></canvas>
-      <div>
-        <h1>解説</h1>
-        <p>解説テキスト</p>
-      </div>
-    </div>
-
     <script src="../js/set.js"></script>
     <script src="../js/anim.js"></script>
     <script src="../js/shootingStar.js"></script>
     <script type="text/javascript">
 
-      let disp = document.getElementById("graph-container").style.display = "none";
+      const container = document.getElementById("container");
+      const graphCanvas = document.querySelector('#container canvas');
+      container.style.maxHeight = container.clientHeight + "px";
+      let disp = container.style.opacity = 0;
       window.addEventListener("keyup", handleKeydown);
       function handleKeydown(event){
         if (event["key"] == "Enter") {
-          if (disp == "block") {
-            document.getElementById("graph-container").style.display = "none";
+          if (disp == 1) {
             document.location.href = "./title.html";
           } else {
-            disp = document.getElementById("graph-container").style.display = "block";
+            disp = container.style.opacity = 1;
+            graphCanvas.style.maxWidth = graphCanvas.clientWidth + "px";
+            graphCanvas.style.minWidth = graphCanvas.clientWidth + "px";
             displayGraph(value);
           }
         }
@@ -176,7 +193,7 @@
 
       function displayGraph(value) {
         var ctx = document.getElementById('graph').getContext('2d');
-        ctx.canvas.height =  window.innerHeight/3;
+        ctx.canvas.height =  window.innerHeight/8;
         var myChart = new Chart(ctx, {
           type: 'polarArea',
           data: {
