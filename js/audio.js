@@ -3,7 +3,7 @@ var manager,
     canvas,
     canvasContext;
 
-function visualizer_design(size,line_width,stroke,fill){
+function visualizer_design(size,line_width,fill){
   return function(){
 
     $('#visualizer').attr('height', window.innerHeight);
@@ -30,7 +30,7 @@ function visualizer_design(size,line_width,stroke,fill){
           siz = size;
 
         canvasContext.clearRect(0, 0, canvas.width, canvas.height);
-        canvasContext.strokeStyle = stroke;
+        canvasContext.strokeStyle = fill;
 
         canvasContext.fillStyle = fill;
         canvasContext.lineWidth = line_width;

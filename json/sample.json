@@ -16,6 +16,5 @@
   "milkyway-rotate": 115,
   "visualizer-size":100,
   "visualizer-line_width":1.0,
-  "visualizer-stroke":"#0f0",
-  "visualizer-fill":"rgb(0, 255, 0)"
+  "visualizer-fill":"#0f0"
 }
