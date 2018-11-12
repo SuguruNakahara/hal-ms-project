@@ -13,6 +13,7 @@
     <script src="../js/audio.js"></script>
     <script src="../js/numCheck.js"></script>
     <script src="../js/setContent.js"></script>
+    <script src="../js/setGraph.js"></script>
     <style type="text/css">
 
     body {
@@ -139,7 +140,7 @@
             disp = container.style.opacity = 1;
             graphCanvas.style.maxWidth = graphCanvas.clientWidth + "px";
             graphCanvas.style.minWidth = graphCanvas.clientWidth + "px";
-            displayGraph(value);
+            setGraph(value);
           }
         }
       }
@@ -188,29 +189,6 @@
       const url = path + "json/sample.json";
       // const getData = getQuery();
       // const url = path + "json/" + getData["name"] + ".json";
-
-      function displayGraph(value) {
-        var ctx = document.getElementById('graph').getContext('2d');
-        ctx.canvas.height =  window.innerHeight/8;
-        var myChart = new Chart(ctx, {
-          type: 'polarArea',
-          data: {
-            labels: ["", "", "", "", "", ""],
-            datasets: [{
-              backgroundColor: [
-                "red",
-                "orange",
-                "green",
-                "blue",
-                "purple",
-                "yellow"
-              ],
-              borderWidth: 5,
-              data:[ value[6], value[1], value[2], value[3], value[4], value[5]]
-            }]
-          }
-        });
-      }
 
       let value;
       Promise.all([
