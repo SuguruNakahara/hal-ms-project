@@ -5,8 +5,10 @@ var manager,
 
 const colors = ["#00ff00","#ff0000","#0000ff"];
 
-function visualizer_design(size, line_width, fill, name = 'sample'){
+function visualizer_design(size, line_width, fill, name){
   return function(){
+
+    name = name != null ? name : 'sample';
 
     $('#visualizer').attr('height', window.innerHeight);
     $('#visualizer').attr('width', window.innerWidth);

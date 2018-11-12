@@ -173,7 +173,7 @@
       const path = current_path.substring(0, index);
       let url;
 
-      const getData = getQuery();
+      let getData = getQuery();
       if (getData != null) {
         url = path + "json/" + getData + ".json";
       } else {
