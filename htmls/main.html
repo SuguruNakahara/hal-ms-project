@@ -163,10 +163,10 @@
         const colorList = [
           ["#ff0000","#ffbbbb","#ffbb00","#ff00bb"], // red
           ["#00ff00","#bbff00","#bbffbb","#00ffbb"], // orange
-          ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // yellow
           ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // green
           ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // blue
-          ["#ff00ff","#ff00ff","#ff00ff","#ff00ff"]  // purple
+          ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // purple
+          ["#ff00ff","#ff00ff","#ff00ff","#ff00ff"]  // yellow
         ];
 
         const stars = {
@@ -203,15 +203,15 @@
         var myChart = new Chart(ctx, {
           type: 'polarArea',
           data: {
-            labels: ["RED", "ORANGE", "YELLOW", "GREEN", "BLUE", "PURPLE"],
+            labels: ["", "", "", "", "", ""],
             datasets: [{
               backgroundColor: [
                 "red",
                 "orange",
-                "yellow",
                 "green",
                 "blue",
-                "purple"
+                "purple",
+                "yellow"
               ],
               borderWidth: 5,
               data:[ value[6], value[1], value[2], value[3], value[4], value[5]]
