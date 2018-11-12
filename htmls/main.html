@@ -171,9 +171,14 @@
       const current_path = location.href;
       const index = current_path.indexOf("htmls");
       const path = current_path.substring(0, index);
-      const url = path + "json/sample.json";
-      // const getData = getQuery();
-      // const url = path + "json/" + getData["name"] + ".json";
+      let url;
+
+      const getData = getQuery();
+      if (getData != null) {
+        url = path + "json/" + getData + ".json";
+      } else {
+        url = path + "json/sample.json";
+      }
 
       let value;
       Promise.all([
@@ -187,7 +192,7 @@
         const json = it;
         value = createNumber(json);
         someFunc(value);
-        visualizer_design( value[10],value[11],value[12] )();
+        visualizer_design( value[10], value[11], value[12], getData )();
       })
             
     </script>

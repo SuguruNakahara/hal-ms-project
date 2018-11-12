@@ -5,7 +5,7 @@ var manager,
 
 const colors = ["#00ff00","#ff0000","#0000ff"];
 
-function visualizer_design(size,line_width,fill){
+function visualizer_design(size, line_width, fill, name = 'sample'){
   return function(){
 
     $('#visualizer').attr('height', window.innerHeight);
@@ -58,11 +58,10 @@ function visualizer_design(size,line_width,fill){
 
     manager.load({
       bgm: {
-        path    : '../audio/justUs.m4a',
+        path    : '../audio/' + name + '.mp3',
         loop    : true,
         sound   : false
       }
-      // bgm: '../audio/sample.mp3'
     });
   }
 }
