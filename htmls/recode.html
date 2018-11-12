@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../css/recode.css">
   <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
   <script src="../js/audioManager.min.js"></script>
+  <script src="../js/median.js"></script>
 </head>
 <body class="selector">
 <canvas id="visualizer" ></canvas>
@@ -52,8 +53,7 @@
     }else if(btn_count==2){
 
       // upload data
-      var index = arr.indexOf(Math.max.apply(null,arr));
-      jsonUpload(data[index]);
+      jsonUpload(median_arr(data));
       offRecod();
 
       fadeOut(document.querySelector('.selector'), 2000);
@@ -70,8 +70,6 @@
   * web audio api
   *****************************/
   
-  // 比較用配列
-  var arr = new Array();
   // 一時保存配列
   var data = new Array();
   // 現在時刻命名用
@@ -114,8 +112,7 @@
           console.log('マイク入力がリジェクトされました');
         },
         onEnterFrame: function() {
-          arr.push(Utils.sum(manager.analysers.mic.getByteFrequencyData(16)));
-          data.push(manager.analysers.mic.getByteFrequencyData(16));
+          data.push(manager.analysers.mic.getByteFrequencyData(64));
 
           time_count = time_count + 10;
 
@@ -237,7 +234,12 @@
       "milkyway-opacity" : arr[11],
       "milkyway-top" : arr[12],
       "milkyway-left" : arr[13],
-      "milkyway-rotate" : arr[14]
+      "milkyway-rotate" : arr[14],
+
+      // "visualizer-size":100,
+      // "visualizer-line_width":1.0,
+      // "visualizer-stroke":"#0f0",
+      // "visualizer-fill":"rgb(0, 255, 0)"
     };
 
     const fileName = now + ".json";
