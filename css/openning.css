@@ -8,10 +8,6 @@
   src:url('../font/Starjedi.ttf');
 }
 
-div{
-  font-family: 'description';
-}
-
 #target{
   position:absolute;
   top:0;/*初期位置*/
