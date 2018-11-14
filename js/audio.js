@@ -6,10 +6,16 @@ var manager,
 const colors = ["#00ff00","#ff0000","#0000ff"];
 
 soundList = [
-  "sample1",
-  "sample2"
+  "Morning",
+  "SmilesOfFortune",
+  "natsuNoOmoide",
+  "Greens",
+  "justUs",
+  "MINT",
+  "IntoTheLight",
+  "hoshiNoFuritsumoruMachi"
 ];
-const randomNum = Math.floor( Math.random() * 2 ) ;
+const randomNum = Math.floor( Math.random() * 8 ) ;
 
 function visualizer_design(size, line_width, fill, name){
   return function(){
