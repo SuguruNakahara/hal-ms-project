@@ -1,12 +1,12 @@
 function star(stars) {
 
 const colors = [
-  ["#ff0000","#ffbbbb","#ffbb00","#ff00bb"], // red
-  ["#00ff00","#bbff00","#bbffbb","#00ffbb"], // orange
-  ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // green
-  ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // blue
-  ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // purple
-  ["#ff00ff","#ff00ff","#ff00ff","#ff00ff"]  // yellow
+["#ff0000", "#fc5c2c", "#ff7733","#bc302c"],	// red
+["#ffff00", "#ffd700", "#adff2f","#ffee22"],	//yellow
+["#ec8810", "#ffa500", "#ffb700","#ffa229"],	//orange
+["#00ff00", "#20df96", "#81c200","#206420"],	//green
+["#0000ff", "#1e90ff", "#00ffff","#691fff"],	//blue
+["#ff00ff", "#8a2be2", "#9d159b","#9400d3"]		//perple
 ];
 
 particlesJS('particles-js',
