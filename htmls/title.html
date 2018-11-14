@@ -13,21 +13,28 @@
     </script>
   </head>
   <body>
+
+    <audio id="se" src="../sound/push.mp3"></audio>
+
     <div id="particles-js"></div>
     <div id=title>
-      <!-- 透過あり -->
-<!--      <img src="../img/SW1.png" width="65%" height="60%">-->
-      <!-- 透過なし -->
-<!--       <img src="../img/SW1.svg" width="65" height="60">-->
       <object type="image/svg+xml" data="../img/SW1.svg" width="60%" height="60%"></object>
       <br>
       <a href="#" onclick="frameClick();" onMouseDown="return false;" onSelectStart="return false" id=start>press start</a>
     </div>
+    <audio id="bgm" src="../sound/title.mp3" autoplay="" loop></audio>
     <script src="../js/title.js"></script>
     <script type="text/javascript">
+
+      function play(){
+        const audio = document.getElementById("se");
+        audio.play();
+      }
+
       window.addEventListener("keydown", handleKeydown);
       function handleKeydown(event){
         if (event["key"] == "Enter") {
+          play();
           document.getElementById("start").setAttribute(
             "style",
             "font-family: 'hover'; color: #000; background-color: yellow; border-color: yellow;"

@@ -264,7 +264,14 @@
 </div>
 </form>
 
+<audio id="bgm" src="../sound/recode.mp3" autoplay="" loop></audio>
+
 <script type="text/javascript">
+
+  // 直接できないため音量の調整をスクリプトで
+  const bgm = document.getElementById("bgm");
+  bgm.volume = 0.3;
+
   window.addEventListener("keydown", handleKeydown);
   function handleKeydown(event){
     if (event["key"] == "Enter") {
