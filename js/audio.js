@@ -5,10 +5,17 @@ var manager,
 
 const colors = ["#00ff00","#ff0000","#0000ff"];
 
+soundList = [
+  "sample1",
+  "sample2"
+];
+const randomNum = Math.floor( Math.random() * 2 ) ;
+
 function visualizer_design(size, line_width, fill, name){
   return function(){
 
-    name = name != null ? name : 'sample';
+    // ランダム選曲
+    name = name != null ? name : soundList[randomNum];
 
     $('#visualizer').attr('height', window.innerHeight);
     $('#visualizer').attr('width', window.innerWidth);
@@ -60,9 +67,9 @@ function visualizer_design(size, line_width, fill, name){
 
     manager.load({
       bgm: {
-        path    : '../audio/' + name + '.mp3',
+        path    : '../sound/' + name + '.mp3',
         loop    : true,
-        sound   : false
+        sound   : true
       }
     });
   }
