@@ -195,10 +195,10 @@
         return it[1].json()
       })
       .then(it => {
-        setContent();
         const json = it;
         value = createNumber(json);
         someFunc(value);
+        setContent(value[0]);
         visualizer_design( value[11], value[12], value[0], getData )();
       })
             
