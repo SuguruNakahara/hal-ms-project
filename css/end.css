@@ -24,7 +24,7 @@ html {
   margin: auto;
   display: block;
   fill: url("#MyGradient");
-  stroke: #F00;
+  stroke: #C0C0C0;
   stroke-miterlimit: 5;
 }
 
