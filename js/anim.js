@@ -1,7 +1,7 @@
 function milky(milkys) {
 
   const colors = [
-    ["#ff0000", "#fc5c2c", "#ff7733","#bc302c"],  // red
+	["#ff0000", "#FF0099", "#FF4F50","#FF69A3"],	// red
     ["#ec8810", "#ffa500", "#ffb700","#ffa229"],  //orange
     ["#ffff00", "#ffd700", "#adff2f","#ffee22"],  //yellow
     ["#00ff00", "#20df96", "#81c200","#206420"],  //green
