@@ -3,7 +3,7 @@ var manager,
     canvas,
     canvasContext;
 
-const colors = ["#FF0000","#FFA500","#00FF00","#0000FF","#800080","#FFFF00"];
+const colors = ["#FF0000","#FFA500","#FFFF00","#00FF00","#0000FF","#800080"];
 
 soundList = [
   "Morning",

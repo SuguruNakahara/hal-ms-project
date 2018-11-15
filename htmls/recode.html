@@ -214,24 +214,19 @@
   function jsonUpload(arr)
   {
     const data = {
-      "star-value" : arr[0],
-      "star-size" : arr[1],
-      "star-opacity" : arr[2],
-      "star-color" : arr[3],
+      "color" : arr[0],
+      "star-value" : arr[1],
+      "star-size" : arr[2],
+      "star-opacity" : arr[3],
       "shooting-speed" : arr[4],
-      "shooting-size" : arr[5],
-      "shooting-opacity" : arr[6],
-      "shooting-color" : arr[7],
-      "milkyway-value" : arr[8],
-      "milkyway-color" : arr[9],
-      "milkyway-size" : arr[10],
-      "milkyway-opacity" : arr[11],
-      "milkyway-top" : arr[12],
-      "milkyway-left" : arr[13],
-      "milkyway-rotate" : arr[14],
-      "visualizer-size": arr[15],
-      "visualizer-line_width": arr[16],
-      "visualizer-fill": arr[17]
+      "shooting-rotate" : arr[5],
+      "milkyway-value" : arr[6],
+      "milkyway-size" : arr[7],
+      "milkyway-opacity" : arr[8],
+      "milkyway-left" : arr[9],
+      "milkyway-rotate" : arr[10],
+      "visualizer-size": arr[11],
+      "visualizer-line_width": arr[12]
     };
 
     const fileName = now + ".json";
