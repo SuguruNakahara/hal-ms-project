@@ -34,15 +34,9 @@
     transform: translateY(100vh);
   }
   100%{
-    transform: translateY(-100vh);
+    transform: translateY(-230vh);
   }
 }
-/*
-#target>div{
-  padding-top:75vh;
-  animation:autoscroll 800s linear;
-}
-*/
 
 ul {
   list-style: none;
@@ -69,6 +63,7 @@ html:after{
 #wrap{
   user-select: none;
   position:absolute;
+  height: 50vh;
   top:0;
   bottom:0;
   left:0;
