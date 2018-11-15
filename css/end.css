@@ -3,18 +3,6 @@ html {
   overflow: hidden;
 }
 
-@keyframes dash {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@-webkit-keyframes dash {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
 #Logo {
   width: 100%;
   height: 100%;
@@ -34,105 +22,40 @@ html {
   animation-fill-mode: forwards;
   animation-iteration: 1;
   animation-name: DrawLine, FadeStroke, FillIn;
-  animation-duration: 4s, 1s, 1s;
-  animation-delay: 0s, 3.5s, 3.5s;
 }
 
 #Draw-Mark {
-  animation-delay: 1s, 3.5s, 3.5s;
-  animation-duration: 2s, 1s, 1s;
+  animation-delay: .5s, 2.5s, 2.5s;
+  animation-duration: 1.5s, .5s, .5s;
   stroke-dashArray: 2000;
   stroke-dashoffset: 2000;
 }
 #Draw-T{
-  animation-delay: 2s, 3.5s, 3.5s;
-  animation-duration: 2s, 1s, 1s;
+  animation-delay: 1.5s, 2.5s, 2.5s;
+  animation-duration: 1.5s, .5s, .5s;
   stroke-dasharray: 2000;
   stroke-dashoffset: 2000; 
 }
 #Draw-K{
-  animation-delay: 3s,  3.5s, 3.5s;
-  animation-duration: 2s, 1s, 1s;
+  animation-delay: 1.5s,  2.5s, 2.5s;
+  animation-duration: 1.5s, .5s, .5s;
   stroke-dasharray: 2000;
   stroke-dashoffset: 2000; 
 }
 
-#Draw-hLine{
-  stroke: transparent;
-  border-color: transparent;
-  fill-opacity: 0;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-  animation-iteration: 1;
-  animation-name:  FillIn;
-  animation-duration:   1s;
-  animation-delay:  3.5s;
-  animation-delay:   4.5s;
-  animation-duration:  1s;
-}
-
 #Draw-TLine{
-  animation-delay: 3s, 3.5s, 3.5s;
-  animation-duration: 2s, 1s, 1s;
+  animation-delay: 1.5s, 2.5s, 2.5s;
+  animation-duration: 1s, .5s, .5s;
   stroke-dasharray: 2000;
   stroke-dashoffset: 2000; 
   z-index: 2;
 }
 
 #Draw-you{
-  animation-delay: 4s, 4.5s, 4.5s;
-  animation-duration: 2s, 1s, 1s;
+  animation-delay: 1.5s, 2.5s, 2.5s;
+  animation-duration: 1s, .5s, .5s;
   stroke-dasharray: 2000;
   stroke-dashoffset: 2000; 
-}
-#Draw-Frame {
-  animation-delay: 4s, 4.5s, 4.5s;
-  animation-duration: 2s, 1s, 1s;
-  stroke-dashArray: 2000;
-  stroke-dashoffset: 2000;
-
-}
-
-#Draw-exclamation1 {
-  animation-delay: 5s, 5.5s, 5.5s;
-  animation-duration: 2s, 1s, 1s;
-  stroke-dashArray: 2000;
-  stroke-dashoffset: 2000;
-}
-
-#Draw-exclamation1Dot {
-  animation-delay: 6s, 6.5s, 6.5s;
-  animation-duration: 2s, 1s, 1s;
-  stroke-dashArray: 2000;
-  stroke-dashoffset: 2000;
-}
-
-#Draw-exclamation2 {
-  animation-delay: 5s, 5.5s, 5.5s;
-  animation-duration: 2s, 1s, 1s;
-  stroke-dashArray: 2000;
-  stroke-dashoffset: 2000;
-}
-
-#Draw-exclamation2Dot {
-  animation-delay: 6s, 6.5s, 6.5s;
-  animation-duration: 2s, 1s, 1s;
-  stroke-dashArray: 2000;
-  stroke-dashoffset: 2000;
-}
-
-#Draw-exclamation3 {
-  animation-delay: 5s, 5.5s, 5.5s;
-  animation-duration: 2s, 1s, 1s;
-  stroke-dashArray: 2000;
-  stroke-dashoffset: 2000;
-}
-
-#Draw-exclamation3Dot {
-  animation-delay: 6s, 6.5s, 6.5s;
-  animation-duration: 2s, 1s, 1s;
-  stroke-dashArray: 2000;
-  stroke-dashoffset: 2000;
 }
 
 @keyframes DrawLine {
