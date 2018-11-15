@@ -8,11 +8,14 @@
   src:url('../font/Starjedi.ttf');
 }
 
+body {
+  overflow: hidden;
+}
+
 #frame{
   position:absolute;
   width: 100vw;
   height: 130vh;
-  overflow:hidden;
   font-size: 2.5vw;
   text-align:center;
   font-family:sans-serif;
@@ -35,11 +38,7 @@
     transform: translateY(100vh);
   }
   100%{
-<<<<<<< HEAD
     transform: translateY(-450vh);
-=======
-    transform: translateY(-230vh);
->>>>>>> abe88bb0ad66bd8723379a04a7c59a7fcbaa9ca5
   }
 }
 
