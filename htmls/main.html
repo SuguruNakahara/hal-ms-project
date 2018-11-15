@@ -58,7 +58,7 @@
     }
 
     .star {
-      animation: kirakira 8s linear;
+/*      animation: kirakira 3s linear;*/
       display: inline-block;
       height: 1em;
       line-height: 1em;
@@ -66,13 +66,14 @@
       top: -1em;
       z-index: 1000;
     }
+      
 
     @keyframes kirakira {
       0% {
         transform:translateY(0) rotateY(0);
       }
       100% {
-        transform:translateY(calc(100vh + 1em)) rotateZ(1800deg);
+        transform:translate(0px,calc(100vh + 1em)) rotateZ(1800deg);
       }
     }
 
@@ -88,7 +89,7 @@
     <!-- planetarium star's -->
     <div id="particles-js"></div>
 
-    <div id="shootingStar" class="star">★</div>>
+    <div id="shootingStar" class="star">★</div>
 
     <!-- milky way -->
     <div id="milkyway"></div>
@@ -161,7 +162,7 @@
           "rotate"  : value[9],
         }
         
-        starMaker(1);
+        starMaker(1,"yellow",-30);
         star(stars);
         milky(milkys);
       }

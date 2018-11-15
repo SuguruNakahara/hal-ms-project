@@ -12,22 +12,50 @@ div{
   font-family: 'description';
 }
 
-#target{
+#frame{
   position:absolute;
-  top:0;/*初期位置*/
+/*
+  top:0;
   bottom:0;
   left:0;
   right:0;
+*/
+  width: 100vw;
+  height: 100vh;
   overflow:hidden;
-  font-size:190%;
+  font-size: 2.5vw;
   text-align:center;
   font-family:sans-serif;
   background-color: rgba(0,0,0,0);
 }
 
+.roll{
+  transform: translateY(100vh);
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+.roll.anim{
+  animation-name: opening;
+}
+
+@keyframes opening {
+  0%{
+    transform: translateY(100vh);
+  }
+  100%{
+    transform: translateY(-100vh);
+  }
+}
+/*
 #target>div{
-  padding-top:70vh;
-  animation:autoscroll 1000s linear;
+  padding-top:75vh;
+  animation:autoscroll 800s linear;
+}
+*/
+
+ul {
+  list-style: none;
 }
 
 html:after{
