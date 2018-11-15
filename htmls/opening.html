@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="80;URL=./recode.html">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/vnd.microsoft.icon">
+    <title>HAL MS PROJECT</title>
+    <script src="../js/particles.js-master/particles.js"></script>
+      <script src="../js/opening.js"></script>
+    <script type="text/javascript">
+      function frameClick() {
+        document.location.href = "./recode.html";
+      }
+    </script>
+    <link rel="stylesheet" href="../css/opening.css">
+  </head>
+  <body>
+    <audio src="../sound/openning_s.mp3" autoplay=""></audio>
+    <div id="particles-js"></div>
+    <div id="wrap">
+      <div id="frame">
+        <div class="roll" id="roll">
+          <ul>
+            <li>企画</li>
+          </ul>
+          <ul>
+            <li>あなたは自分の声の魅力に気づいています？</li>
+            <li>ハスキーな声、甲高い声にコンプレックスを抱える</li>
+            <li>そこのあなた！</li>
+            <li>あなたの声の波長によって形・色・動きの決まる</li>
+            <li>星を宇宙に描いて、大切な人と眺めてみませんか。</li>
+            <li>ボイスプラネタリウムではあなたの声を</li>
+            <li>大きさ、長さ、質の合計値として計算し、</li>
+            <li>視覚的に楽しめるようになっています。</li>
+            <li>自分で聞いただけではわからない魅力を見つけよう。</li>
+          </ul>
+          <ul>
+            <li>BGM & SE</li>
+          </ul>
+          <ul>
+            <li>Music is VFR</li>
+            <li>風　合成　環境01</li>
+          </ul>
+          <ul>
+            <li>魔王魂</li>
+            <li>ワンポイント17</li>
+          </ul>
+          <ul>
+            <li>DOVA-SYNDROME</li>
+            <li>メインタイトル</li>
+            <li>MINT</li>
+            <li>Morning</li>
+            <li>Smiles Of Fortune</li>
+            <li>夏の思い出</li>
+            <li>星の降り積もる街</li>
+            <li>GReens</li>
+            <li>Into the light</li>
+          </ul>
+          <ul>
+            <li>キャスト</li>
+            <li>中原秀　  関口咲季</li>
+            <li>町田慶介　  小林雄輝</li>
+            <li>山口諒人　   飯泉ひより</li>
+            <li>吉田稔　  林伸明</li>
+          </ul>
+          <ul>
+            <li>制作期間</li>
+            <li>2018/9/20〜2019/1/23</li>
+          </ul>
+          <ul>
+            <li>制作費用</li>
+            <li>100,000円</li>
+          </ul>
+          <ul>
+            <li>使用言語</li>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>PHP</li>
+            <li>Web Audio API</li>
+            <li>particles.js</li>
+            <li>jQuery</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id=button_area>
+      <a href="#" onclick="frameClick();" onMouseDown="return false;" onSelectStart="return false" id=skip>skip<span class="arrow"></span></a>
+    </div>
+    <script src="../js/title.js"></script>
+    <script type="text/javascript">
+      window.addEventListener("keydown", handleKeydown);
+      function handleKeydown(event){
+        if (event["key"] == "Enter") {
+          document.getElementById("skip").setAttribute(
+            "style",
+            "font-family: 'hover'; color: #000; background-color: yellow; border-color: yellow;"
+          );
+        }
+      }
+
+      window.addEventListener("keyup", handleKeyup);
+      function handleKeyup(event){
+        if (event["key"] == "Enter") {
+          document.getElementById("skip").click();
+        }
+      }
+    </script>
+  </body>
+</html>

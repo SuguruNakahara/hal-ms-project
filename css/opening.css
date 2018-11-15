@@ -8,21 +8,38 @@
   src:url('../font/Starjedi.ttf');
 }
 
-#target{
+#frame{
   position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  font-size:2.5vw;
+  width: 100vw;
+  height: 100vh;
+  overflow:hidden;
+  font-size: 2.5vw;
   text-align:center;
   font-family:sans-serif;
   background-color: rgba(0,0,0,0);
 }
 
-#target>div{
-  padding-top:70vh;
-  animation:autoscroll 1000s linear;
+.roll{
+  transform: translateY(100vh);
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+.roll.anim{
+  animation-name: opening;
+}
+
+@keyframes opening {
+  0%{
+    transform: translateY(100vh);
+  }
+  100%{
+    transform: translateY(-230vh);
+  }
+}
+
+ul {
+  list-style: none;
 }
 
 html:after{
@@ -46,6 +63,7 @@ html:after{
 #wrap{
   user-select: none;
   position:absolute;
+  height: 50vh;
   top:0;
   bottom:0;
   left:0;
