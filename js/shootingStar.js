@@ -19,7 +19,6 @@ function shootingStar_style(speed,angle) {
   
   styleSheet.deleteRule(styleSheet.cssRules.length-1);
   styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-  console.log(styleSheet);
   
 };
 

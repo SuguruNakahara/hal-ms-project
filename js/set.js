@@ -1,16 +1,26 @@
 function star(stars) {
+
+const colors = [
+["#ff0000", "#fc5c2c", "#ff7733","#bc302c"],	// red
+["#ffff00", "#ffd700", "#adff2f","#ffee22"],	//yellow
+["#ec8810", "#ffa500", "#ffb700","#ffa229"],	//orange
+["#00ff00", "#20df96", "#81c200","#206420"],	//green
+["#0000ff", "#1e90ff", "#00ffff","#691fff"],	//blue
+["#ff00ff", "#8a2be2", "#9d159b","#9400d3"]		//perple
+];
+
 particlesJS('particles-js',
   {
     "particles": {
       "number": {
         "value": stars.value,
         "density": {
-          "enable": true,
+          "enable": false,
           "value_area": 800
         }
       },
       "color": {
-        "value": stars.color
+        "value": colors[stars.color]
       },
       "shape": {
         "type": ["circle", "triangle","star","polygon"],

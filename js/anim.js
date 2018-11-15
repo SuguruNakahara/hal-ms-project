@@ -1,5 +1,14 @@
 function milky(milkys) {
 
+  const colors = [
+    ["#ff0000","#ffbbbb","#ffbb00","#ff00bb"], // red
+    ["#00ff00","#bbff00","#bbffbb","#00ffbb"], // orange
+    ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // green
+    ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // blue
+    ["#0000ff","#bb00ff","#00bbff","#bbbbff"], // purple
+    ["#ff00ff","#ff00ff","#ff00ff","#ff00ff"]  // yellow
+  ];
+
   const box = document.getElementById('milkyway');
   let setHeight;
 
@@ -32,7 +41,7 @@ function milky(milkys) {
           }
         },
         "color": {
-          "value": milkys.color
+          "value": colors[milkys.color]
         },
         "shape": {
           "type": ["circle", "triangle","star","polygon"],

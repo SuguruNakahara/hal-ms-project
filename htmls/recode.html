@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="../css/recode.css">
   <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
   <script src="../js/audioManager.min.js"></script>
+  <script src="../js/median.js"></script>
+  <script src="../js/fadeOut.js"></script>
 </head>
 <body class="selector">
 <canvas id="visualizer" ></canvas>
@@ -19,50 +21,42 @@
 
   var btn_count=0;
 
-  // フェードアウト
-  function fadeOut(node, duration) {
-    node.style.opacity = 1;
-
-    var start = performance.now();
-
-    requestAnimationFrame(function tick(timestamp) {
-      // イージング計算式（linear）
-      var easing = (timestamp - start) / duration;
-
-      // opacityが0より小さくならないように
-      node.style.opacity = Math.max(1 - easing, 0);
-
-      // イージング計算式の値が1より小さいとき
-      if (easing < 1) {
-        requestAnimationFrame(tick);
-      } else {
-        node.style.opacity = '';
-        node.style.display = 'none';
-      }
-    });
-  }
+  let uploadFlg = 0;
 
   //ボタン制御
   function buttonControl(){
     btn_count++;
-    if(btn_count==1){
+    if (btn_count == 1) {
       document.getElementById("btn").innerText="stop"
       play(this);
 
-    }else if(btn_count==2){
+    } else if (btn_count == 2) {
 
-      // upload data
-      var index = arr.indexOf(Math.max.apply(null,arr));
-      jsonUpload(data[index]);
+      jsonUpload(median_arr(data));
       offRecod();
 
       fadeOut(document.querySelector('.selector'), 2000);
+
       setTimeout(function(){
-        var target = document.getElementById("form");
-        target.method = "get";
-        target.elements["name"].value = now;
-        target.submit();
-      }, 2000)
+
+        if (uploadFlg == 500) {
+          var target = document.getElementById("form");
+          setTimeout(function(){
+            target.submit();
+          }, 500);
+
+        } else {
+          var target = document.getElementById("form");
+          setTimeout(function(){
+            target.method = "get";
+            target.elements["name"].value = now;
+            target.submit();
+          }, 500);
+
+        }
+
+      }, 1500);
+
     }
   }
 
@@ -70,8 +64,6 @@
   * web audio api
   *****************************/
   
-  // 比較用配列
-  var arr = new Array();
   // 一時保存配列
   var data = new Array();
   // 現在時刻命名用
@@ -114,8 +106,7 @@
           console.log('マイク入力がリジェクトされました');
         },
         onEnterFrame: function() {
-          arr.push(Utils.sum(manager.analysers.mic.getByteFrequencyData(16)));
-          data.push(manager.analysers.mic.getByteFrequencyData(16));
+          data.push(manager.analysers.mic.getByteFrequencyData(64));
 
           time_count = time_count + 10;
 
@@ -237,7 +228,10 @@
       "milkyway-opacity" : arr[11],
       "milkyway-top" : arr[12],
       "milkyway-left" : arr[13],
-      "milkyway-rotate" : arr[14]
+      "milkyway-rotate" : arr[14],
+      "visualizer-size": arr[15],
+      "visualizer-line_width": arr[16],
+      "visualizer-fill": arr[17]
     };
 
     const fileName = now + ".json";
@@ -249,8 +243,14 @@
         console.log(xhttpreq.responseText);
       }
     };
+
+    xhttpreq.onerror = function (e) {
+      uploadFlg = 500;
+    };
+
     xhttpreq.open("POST", "http://0.0.0.0:8008/index.php", true);
     xhttpreq.send(formdata);
+
   }
 
 </script>
@@ -264,7 +264,14 @@
 </div>
 </form>
 
+<audio id="bgm" src="../sound/recode.mp3" autoplay="" loop></audio>
+
 <script type="text/javascript">
+
+  // 直接できないため音量の調整をスクリプトで
+  const bgm = document.getElementById("bgm");
+  bgm.volume = 0.3;
+
   window.addEventListener("keydown", handleKeydown);
   function handleKeydown(event){
     if (event["key"] == "Enter") {

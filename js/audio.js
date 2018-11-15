@@ -3,8 +3,25 @@ var manager,
     canvas,
     canvasContext;
 
-function visualizer_design(size,line_width,stroke,fill){
+const colors = ["#00ff00","#ff0000","#0000ff"];
+
+soundList = [
+  "Morning",
+  "SmilesOfFortune",
+  "natsuNoOmoide",
+  "Greens",
+  "justUs",
+  "MINT",
+  "IntoTheLight",
+  "hoshiNoFuritsumoruMachi"
+];
+const randomNum = Math.floor( Math.random() * 8 ) ;
+
+function visualizer_design(size, line_width, fill, name){
   return function(){
+
+    // ランダム選曲
+    name = name != null ? name : soundList[randomNum];
 
     $('#visualizer').attr('height', window.innerHeight);
     $('#visualizer').attr('width', window.innerWidth);
@@ -30,9 +47,9 @@ function visualizer_design(size,line_width,stroke,fill){
           siz = size;
 
         canvasContext.clearRect(0, 0, canvas.width, canvas.height);
-        canvasContext.strokeStyle = stroke;
+        canvasContext.strokeStyle = colors[fill];
 
-        canvasContext.fillStyle = fill;
+        canvasContext.fillStyle = colors[fill];
         canvasContext.lineWidth = line_width;
 
         canvasContext.save();
@@ -55,8 +72,11 @@ function visualizer_design(size,line_width,stroke,fill){
     })).init();
 
     manager.load({
-      bgm: '../audio/justUs.m4a'
-      // bgm: '../audio/sample.mp3'
+      bgm: {
+        path    : '../sound/' + name + '.mp3',
+        loop    : true,
+        sound   : true
+      }
     });
   }
 }
