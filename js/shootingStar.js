@@ -22,12 +22,10 @@ function shootingStar_style(speed,angle) {
   
 };
 
-function starMaker(n, setColor,angle) {
+function starMaker(setColor,angle) {
   const star = document.getElementById('shootingStar');
   star.style.color = setColor;
-  for(let i = 0; i < n; i++) {
-    starSet(star,angle);
-  }
+  starSet(star,angle);
 }
 
 function starSet(clone,an) {
