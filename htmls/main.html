@@ -100,6 +100,10 @@
   </head>
   <body>
 
+    <form action="end.html" method="post" id="form">
+      <input type="hidden" name="name" value="">
+    </form>
+
     <div id="back"></div>
 
     <div id="container">
@@ -135,7 +139,10 @@
       function handleKeydown(event){
         if (event["key"] == "Enter") {
           if (disp == 1) {
-            document.location.href = "./end.html";
+            const target = document.getElementById("form");
+            target.method = "get";
+            target.elements["name"].value = value[0];
+            target.submit();
           } else {
             disp = container.style.opacity = 1;
             graphCanvas.style.maxWidth = graphCanvas.clientWidth + "px";
