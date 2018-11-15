@@ -16,8 +16,8 @@ function createNumber(jsonData) {
   arr.push(fmt(jsonData["star-opacity"], 0.1, 1));
 
   // shooting
-  arr.push(Math.floor(fmt(jsonData["shooting-speed"], 10, 30)));
-  arr.push(Math.floor(fmt(jsonData["shooting-rotate"], 10, 15)));
+  arr.push(Math.floor(fmt(jsonData["shooting-speed"], 5, 15)));
+  arr.push(Math.floor(fmt(jsonData["shooting-rotate"], 10, 120)));
 
   //milkyway
   arr.push(Math.floor(fmt(jsonData["milkyway-value"], 100, 400)));
