@@ -8,7 +8,7 @@ function createNumber(jsonData) {
   }
 
   // arr.push(Math.floor(fmt(jsonData["color"], 0, 5)));
-  arr.push(Math.floor(Math.random()*5));
+  arr.push(Math.floor(Math.random() * 6));
 
   //star
   arr.push(Math.floor(fmt(jsonData["star-value"], 100, 500)));
