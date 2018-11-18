@@ -14,50 +14,40 @@
 <canvas id="visualizer" ></canvas>
 
 <script>
-
   /*****************************
   * fade out
   *****************************/
-
-  var btn_count=0;
-
+  let btn_count = 0;
   let uploadFlg = 0;
 
-  //ボタン制御
   function buttonControl(){
     btn_count++;
     if (btn_count == 1) {
-      document.getElementById("btn").innerText="stop"
+      document.getElementById("btn").innerText = "stop";
       play(this);
-
-    } else if (btn_count == 2) {
-
-      jsonUpload(median_arr(data));
-      offRecod();
-
-      fadeOut(document.querySelector('.selector'), 2000);
-
-      setTimeout(function(){
-
-        if (uploadFlg == 500) {
-          var target = document.getElementById("form");
-          setTimeout(function(){
-            target.submit();
-          }, 500);
-
-        } else {
-          var target = document.getElementById("form");
-          setTimeout(function(){
-            target.method = "get";
-            target.elements["name"].value = now;
-            target.submit();
-          }, 500);
-
-        }
-
-      }, 1500);
-
     }
+  }
+
+  function uploadAndFadeNext () {
+    jsonUpload(median_arr(data));
+    offRecod();
+    fadeOut(document.querySelector('.selector'), 2000);
+    setTimeout(function(){
+      if (uploadFlg == 500) {
+        var target = document.getElementById("form");
+        setTimeout(function(){
+          target.submit();
+        }, 500);
+
+      } else {
+        var target = document.getElementById("form");
+        setTimeout(function(){
+          target.method = "get";
+          target.elements["name"].value = now;
+          target.submit();
+        }, 500);
+      }
+    }, 1500);
   }
 
   /*****************************
@@ -120,7 +110,7 @@
           const lower_limit = dat.every(isBelowThreshold);
           if (lower_limit && time_count > 3000) {
               me.stopLoop()
-              buttonControl();
+              uploadAndFadeNext();
           }
 
           canvasContext.clearRect(0, 0, canvas.width, canvas.height);
