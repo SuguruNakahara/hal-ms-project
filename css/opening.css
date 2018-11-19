@@ -8,6 +8,10 @@
   src:url('../font/Starjedi.ttf');
 }
 
+body {
+  overflow: hidden;
+}
+
 #frame{
   position:absolute;
   width: 100vw;

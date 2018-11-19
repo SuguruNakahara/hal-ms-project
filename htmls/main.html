@@ -77,13 +77,12 @@
     }
 
     .star {
-/*      animation: kirakira 3s linear;*/
       display: inline-block;
       height: 1em;
       line-height: 1em;
       position: fixed;
       top: -1em;
-      z-index: 1000;
+      z-index: 10;
     }
       
 
@@ -99,6 +98,10 @@
     </style>
   </head>
   <body>
+
+    <form action="end.html" method="post" id="form">
+      <input type="hidden" name="name" value="">
+    </form>
 
     <div id="back"></div>
 
@@ -135,7 +138,10 @@
       function handleKeydown(event){
         if (event["key"] == "Enter") {
           if (disp == 1) {
-            document.location.href = "./end.html";
+            const target = document.getElementById("form");
+            target.method = "get";
+            target.elements["name"].value = value[0];
+            target.submit();
           } else {
             disp = container.style.opacity = 1;
             graphCanvas.style.maxWidth = graphCanvas.clientWidth + "px";
@@ -148,22 +154,22 @@
       function someFunc(value) {
 
         const stars = {
-          "value"   : value[0],
-          "size"    : value[1],
-          "opacity" : value[2],
-          "color"   : value[3],
+          "value"   : value[1],
+          "size"    : value[2],
+          "opacity" : value[3],
+          "color"   : value[0],
         }
 
         const milkys = {
-          "value"   : value[4],
-          "color"   : value[5],
-          "size"    : value[6],
-          "opacity" : value[7],
-          "left"    : value[8],
-          "rotate"  : value[9],
+          "value"   : value[6],
+          "color"   : value[0],
+          "size"    : value[7],
+          "opacity" : value[8],
+          "left"    : value[9],
+          "rotate"  : value[10],
         }
         
-        starMaker("yellow",-30,5);
+        starMaker(value[0], value[5], value[4]);
         star(stars);
         milky(milkys);
       }
@@ -188,11 +194,11 @@
         return it[1].json()
       })
       .then(it => {
-        setContent();
         const json = it;
         value = createNumber(json);
         someFunc(value);
-        visualizer_design( value[10], value[11], value[12], getData )();
+        setContent(value[0]);
+        visualizer_design( value[11], value[12], value[0], getData )();
       })
             
     </script>

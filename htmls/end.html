@@ -7,23 +7,64 @@
     <link rel="stylesheet" href="../css/title.css">
     <link rel="stylesheet" href="../css/end.css">  
     <script src="../js/particles.js-master/particles.js"></script>
+    <script src="../js/getQuery.js"></script>
   </head>
 
 <body>
+
+<audio src="../sound/end.mp3" autoplay=""></audio>
 
 <div id="particles-js"></div>
 
 <svg id="Logo-Defs" version="1.2" baseProfile="tiny"> 
   <defs>
 
-    <linearGradient id="MyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="5%"  stop-color="#F00"/>
-      <stop offset="50%" stop-color="#F50" />
-      <stop offset="95%" stop-color="#FF0"/>
-    </linearGradient>
-  
-    <g id="Logo-Group">
-      <g id="Logo-Text">
+  <linearGradient id="MyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+<stop id="stopColor1" offset="10%"/>
+<stop id="stopColor2" offset="30%"/>
+<stop id="stopColor3" offset="90%"/>
+
+<script>
+
+let getData = getQuery();
+
+const stopColor1 = document.getElementById('stopColor1');
+const stopColor2 = document.getElementById('stopColor2');
+const stopColor3 = document.getElementById('stopColor3');
+
+if (getData == 0) { // red
+  stopColor1.style.stopColor = "#FFBEDA";
+  stopColor2.style.stopColor = "#FF97C2";
+  stopColor3.style.stopColor = "#FF5192";
+
+} else if (getData == 1) { // orange
+  stopColor1.style.stopColor = "#FFAD90";
+  stopColor2.style.stopColor = "#FF9872";
+  stopColor3.style.stopColor = "#FF773E";
+
+} else if (getData == 2) { // yellow
+  stopColor1.style.stopColor = "#FFFFAA";
+  stopColor2.style.stopColor = "#FFFF77";
+  stopColor3.style.stopColor = "#FFFF44";
+
+} else if (getData == 3) { // green
+  stopColor1.style.stopColor = "#B1F9D0";
+  stopColor2.style.stopColor = "#86F9C5";
+  stopColor3.style.stopColor = "#64F9C1";
+
+} else if (getData == 4) { // blue
+  stopColor1.style.stopColor = "#BAD3FF";
+  stopColor2.style.stopColor = "#8EB8FF";
+  stopColor3.style.stopColor = "#5D99FF";
+
+} else { // purple
+  stopColor1.style.stopColor = "#FFCCFF";
+  stopColor2.style.stopColor = "#FFAAFF";
+  stopColor3.style.stopColor = "#FF88FF";
+}
+
+</script>
+
         <path  id="K" class="Text" d="M373.115,196.66c9.264,27.287,33.894,46.59,63.287,44.628c14.542-0.967,28.646-7.142,39.46-16.837
             c12.772-11.458,20.197-27.571,23.954-44.064c1.99-8.712,2.829-17.66,3.086-26.579c0.12-4.069-11.342-1.143-11.446,2.182
             c-0.839,29.825-11.665,71.843-45.862,78.717c-28.014,5.634-52.564-16.706-61.024-41.631
@@ -37,7 +78,6 @@
             c-15.673,13.612-31.196,27.831-48.216,39.768c-30.78,21.593-72.626,38.601-110.815,30.348
             c-14.315-3.086-27.939-10.594-35.324-23.643c-8.82-15.59-6.666-34.517-1.779-50.965C34.25,129.245,19.979,131.751,18.644,136.223
             L18.644,136.223z"/>
-
       
         <path id="Mark" class="Text" d="M407.624,150.934c-11.898,6.55-21.633,14.875-27.971,26.892c2.026-17.94,4.651-35.816,7.769-53.524
             c0.943-5.383-10.762-3.221-11.646,1.543c-3.441,18.563-6.861,37.138-11.01,55.554c-3.708,16.541-7.153,34.984-15.79,49.823
@@ -138,10 +178,8 @@
   <use id="Draw-K" class="Animate-Draw" xlink:href="#K" />
   <use id="Draw-T" class="Animate-Draw" xlink:href="#T" />
   <use id="Draw-Mark" class="Animate-Draw" xlink:href="#Mark" />
-  <use id="Draw-hLine" xlink:href="#hLine" />
   <use id="Draw-TLine" class="Animate-Draw" xlink:href="#TLine" />   
   <use id="Draw-you" class="Animate-Draw" xlink:href="#you" />
-  <use id="Draw-Frame" class="Animate-Draw" xlink:href="#Frame" />
 </svg>
 
 <a id="finish" href="./title.html"></a>

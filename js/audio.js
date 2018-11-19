@@ -3,7 +3,7 @@ var manager,
     canvas,
     canvasContext;
 
-const colors = ["#00ff00","#ff0000","#0000ff"];
+const colors = ["#FF0000","#FFA500","#FFFF00","#00FF00","#0000FF","#800080"];
 
 soundList = [
   "Morning",
@@ -21,7 +21,8 @@ function visualizer_design(size, line_width, fill, name){
   return function(){
 
     // ランダム選曲
-    name = name != null ? name : soundList[randomNum];
+    backSound = soundList[randomNum];
+    voiceName = name != null ? name : 'sample';
 
     $('#visualizer').attr('height', window.innerHeight);
     $('#visualizer').attr('width', window.innerWidth);
@@ -36,11 +37,12 @@ function visualizer_design(size, line_width, fill, name){
         isLoaded = true;
         this.onEnterFrame();
         this.play('bgm');
+        this.play('voice');
         this.startLoop();
       },
       onEnterFrame    : function() {
         var me  = this,
-          dat = me.analysers.bgm.getByteFrequencyData(128),
+          dat = me.analysers.voice.getByteFrequencyData(128),
           len = dat.length,
           haf = len / 2,
           rad = canvas.height/12,
@@ -72,8 +74,13 @@ function visualizer_design(size, line_width, fill, name){
     })).init();
 
     manager.load({
+      voice: {
+        path    : '../audio/' + voiceName + '.mp3',
+        loop    : true,
+        sound   : false
+      },
       bgm: {
-        path    : '../sound/' + name + '.mp3',
+        path    : '../sound/' + backSound + '.mp3',
         loop    : true,
         sound   : true
       }
