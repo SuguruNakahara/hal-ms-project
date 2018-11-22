@@ -39,12 +39,37 @@ body {
     transform: translateY(100vh);
   }
   100%{
-    transform: translateY(-450vh);
+    transform: translateY(-550vh);
   }
 }
 
 ul {
   list-style: none;
+}
+
+.plan{
+  margin-bottom: 2em;
+}
+
+.technology{
+  margin-bottom: 4.5em;
+}
+
+.title1{
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.title2{
+  font-size: 1.4em;
+  font-weight:bold;
+  line-height: 2
+}
+
+.title3{
+  font-size: 1.8em;
+  font-weight:bold;
+  line-height: 2
 }
 
 html:after{
@@ -54,8 +79,8 @@ html:after{
   bottom:0;
   left:0;
   right:0;
-  background:linear-gradient(top,rgba(0,0,0,1),rgba(0,0,0,0) 100%);
-  background:linear-gradient(to bottom,rgba(0,0,0,1),rgba(0,0,0,0) 100%);
+  background:linear-gradient(top,rgba(0,0,0,1) 15%,rgba(0,0,0,0) 100%);
+  background:linear-gradient(to bottom,rgba(0,0,0,1) 15%,rgba(0,0,0,0) 100%);
   pointer-events:none;
 }
 
@@ -82,27 +107,29 @@ html{
   background:black;
 }
 
+/*
 @keyframes autoscroll{
   to{
     margin-top:-5000%;
   }
 }
+*/
 
 #button_area{
   position: fixed;
   bottom: 5%;
-  right: 10%;
+  right: 12%;
   width: 10%;
 }
 
 #skip{
-  width: 100%;
+  width: 140%;
   font-family: 'description';
   display: inline-block;
   text-align: center;
   border-style:solid;
   border-width:medium;
-  font-size: 150%;
+  font-size: 180%;
   padding: 5% 20%;
   color: yellow;
   text-decoration: none;
@@ -117,19 +144,8 @@ html{
   color: black;
 }
 
-#skip:hover .arrow {
+#skip:hover {
   border-color: black black transparent transparent;
-}
-
-.arrow{
-  display:inline-block;
-  width: 10px;
-  height: 10px;
-  margin-left: 10px;
-  border-style:double;
-  border-width:solid;
-  border-color: yellow yellow transparent transparent;
-  transform: rotate(45deg);
 }
 
 body {

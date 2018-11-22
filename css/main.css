@@ -1,3 +1,20 @@
+
+@font-face {
+  font-family: 'description';
+  src: url('../font/Starjhol.ttf');
+}
+
+@font-face{
+  font-family: 'hover';
+  src:url('../font/Starjedi.ttf');
+}
+
+@font-face{
+  font-family: 'aaa';
+  src:url('../font/azuki.ttf');
+}
+
+
 /* フェードイン */
 @keyframes fade-in{
   from{
@@ -21,6 +38,23 @@ body {
   
   animation-name: fade-in;
   animation-duration: 7s;
+}
+
+.container_h{
+  font-family: 'aaa';
+  width: 50%;
+  height: 10%;
+}
+
+.container_p{
+  font-family: 'aaa';
+  font-size: 1.5em;
+  margin-top: 0;
+  height: 50%;
+}
+
+.container_img{
+  height: 40%;
 }
 
 #back{

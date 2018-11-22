@@ -34,6 +34,7 @@ function starSet(clone,an,speed) {
   const starStyle = starClone.style;
   starStyle.left = 100 * Math.random() + "%";
   starStyle.animationDelay = 2 * Math.random() + "s";
+  starStyle.opacity = 1;
   shootingStar_style(speed,an);
 
   document.body.appendChild(starClone);

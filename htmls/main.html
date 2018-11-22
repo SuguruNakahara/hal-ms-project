@@ -50,8 +50,7 @@
       flex-direction: column;
     }
 
-    .graphText p,
-    .graphText img {
+    .graphText p{
       width: 80%;
       font-size: 2vw;
       flex-shrink: 2;
@@ -64,6 +63,14 @@
       font-size: 2.3vw;
       flex-shrink: 1;
       text-align: center;
+    }
+      
+    .graphText img{
+      width: 70%;
+      font-size: 2vw;
+      flex-shrink: 2;
+      padding: 0 15%;
+      margin-bottom: 5%;
     }
 
     canvas#visualizer {
@@ -83,6 +90,7 @@
       position: fixed;
       top: -1em;
       z-index: 10;
+      opacity: 0;
     }
       
 
@@ -108,9 +116,9 @@
     <div id="container">
       <canvas class="item" id="graph"></canvas>
       <div class="item graphText">
-        <h1></h1>
-        <p></p>
-        <img src="#">
+        <h1 class="container_h" style="font-size: 3em;"></h1>
+        <p class="container_p" style="font-size: 2.5em;"></p>
+        <img src="#" class="container_img">
       </div>
     </div>
 
