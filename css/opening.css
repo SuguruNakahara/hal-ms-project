@@ -98,7 +98,7 @@ html:after{
   left:0;
   right:0;
   transform-origin:50% 100%;
-  transform:perspective(300px) rotateX(10deg); /* 角度 */
+  transform:perspective(300px) rotateX(5deg); /* 角度 */
   background-color: rgba(0,0,0,0);
 }
 
