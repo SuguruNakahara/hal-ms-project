@@ -9,17 +9,23 @@ function createNumber(jsonData) {
 
   //  frequency Color
   const frequency = jsonData["color"];
+  let frequencySound = 0;
   if (frequency < 20) {
+    frequencySound = frequency % 3;
     arr.push(0);
   } else if (frequency < 30) {
+    frequencySound = frequency % 3;
     arr.push(1);
   } else if (frequency < 40) {
+    frequencySound = frequency % 3;
     arr.push(2);
   } else if (frequency < 50) {
+    frequencySound = frequency % 3;
     arr.push(3);
   } else if (frequency < 60) {
+    frequencySound = frequency % 3;
     arr.push(4);
-  } else {
+  } else { // purple
     arr.push(5);
   }
 
@@ -41,6 +47,9 @@ function createNumber(jsonData) {
 
   arr.push(Math.floor(fmt(jsonData["visualizer-size"], 90, 120)));
   arr.push(Math.floor(fmt(jsonData["visualizer-line_width"], 1, 2)));
+
+  // 0-3
+  arr.push( frequencySound );
 
   return arr;
 }
