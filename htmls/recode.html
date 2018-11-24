@@ -77,7 +77,7 @@
   canvasContext.translate(-canvas.width/2, -canvas.height/2);
 
   function isBelowThreshold(currentValue) {
-    return currentValue > 60;
+    return currentValue > 30;
   }
 
   var play = function() {
@@ -108,7 +108,7 @@
           siz = time_count;
 
           const lower_limit = dat.every(isBelowThreshold);
-          if (lower_limit && time_count > 3000) {
+          if (lower_limit && time_count > 1500) {
               me.stopLoop()
               uploadAndFadeNext();
           }
