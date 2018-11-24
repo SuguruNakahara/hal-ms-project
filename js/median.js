@@ -1,4 +1,10 @@
 var median = function(arr) {
+
+  // 0を削除 より正確な数値を求める場合
+  // arr = arr.filter(function( item ) {
+  //   return item !== 0;
+  // });
+
   var array_length, mid;
   array_length = arr.length;
   new_array = arr.slice(0); //引数として渡された配列のコピーを作成
