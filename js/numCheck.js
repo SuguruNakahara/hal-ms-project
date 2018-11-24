@@ -7,8 +7,21 @@ function createNumber(jsonData) {
     return diff / 200 * v + min;
   }
 
-  // arr.push(Math.floor(fmt(jsonData["color"], 0, 5)));
-  arr.push(Math.floor(Math.random() * 6));
+  //  frequency Color
+  const frequency = jsonData["color"];
+  if (frequency < 20) {
+    arr.push(0);
+  } else if (frequency < 30) {
+    arr.push(1);
+  } else if (frequency < 40) {
+    arr.push(2);
+  } else if (frequency < 50) {
+    arr.push(3);
+  } else if (frequency < 60) {
+    arr.push(4);
+  } else {
+    arr.push(5);
+  }
 
   //star
   arr.push(Math.floor(fmt(jsonData["star-value"], 100, 500)));
