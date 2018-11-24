@@ -5,23 +5,20 @@ var manager,
 
 const colors = ["#FF0000","#FFA500","#FFFF00","#00FF00","#2cadf8","#800080"];
 
-soundList = [
-  "Morning",
-  "SmilesOfFortune",
-  "natsuNoOmoide",
-  "Greens",
-  "justUs",
-  "MINT",
-  "IntoTheLight",
-  "hoshiNoFuritsumoruMachi"
+const soundList = [
+  ["Electro_Rainbow", "goshiki", "IntoTheLight"],  // red
+  ["MINT", "Morning", "hoshiNoFuritsumoruMachi"],  //orange
+  ["SmilesOfFortune", "Greens", "i33"],  //yellow
+  ["natsuNoOmoide", "c2", "new_world"],  //green
+  ["aoihosi", "kuuhakutoseizyaku", "ahurera"],  //blue
+  ["n136"]   //perple
 ];
-const randomNum = Math.floor( Math.random() * 8 ) ;
 
-function visualizer_design(size, line_width, fill, name){
+function visualizer_design(size, line_width, fill, name, color){
   return function(){
 
     // ランダム選曲
-    backSound = soundList[randomNum];
+    backSound = soundList[fill][color];
     voiceName = name != null ? name : 'sample';
 
     $('#visualizer').attr('height', window.innerHeight);

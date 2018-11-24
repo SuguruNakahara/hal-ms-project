@@ -49,7 +49,7 @@ function createNumber(jsonData) {
   arr.push(Math.floor(fmt(jsonData["visualizer-line_width"], 1, 2)));
 
   // 0-3
-  arr.push( frequencySound );
+  arr.push( Math.floor(frequencySound) );
 
   return arr;
 }
