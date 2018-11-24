@@ -1,12 +1,12 @@
 function star(stars) {
 
 const colors = [
-  ["#ff0000", "#FF0099", "#FF4F50","#FF69A3"],	// red
-  ["#ec8810", "#ffa500", "#ffb700","#ffa229"],	//orange
-  ["#ffff00", "#ffd700", "#adff2f","#ffee22"],  //yellow
-  ["#00ff00", "#20df96", "#81c200","#206420"],	//green
-  ["#0000ff", "#1e90ff", "#00ffff","#691fff"],	//blue
-  ["#ff00ff", "#8a2be2", "#9d159b","#9400d3"]		//perple
+  ["#ff0000", "#FF0099", "#FF4F50","#FF69A3","#e138a6","#e24507","#e73825","#e8473e"],  // red
+  ["#ec8810", "#ffa500", "#ffb700","#ffa229","#ee8d1e","#e24507","#e45d00","#ef8457"],  // orange
+  ["#ffff00", "#ffd700", "#adff2f","#ffee22","#e3d600","#f3c800","#edb512","#eec800"],  // yellow
+  ["#00ff00", "#20df96", "#81c200","#206420","#93ca82","#008b42","#87ae22","#9cc45a"],  // green
+  ["#64169e", "#1e90ff", "#00ffff","#0000ff","#7dcdf3","#86bfc9","#68abc4","#9a7fb8"],  // blue
+  ["#ff00ff", "#8a2be2", "#9d159b","#6495ed","#a22e8a","#d5007a","#cd659f","#c0a1ca"]   // purple
 ];
 
 particlesJS('particles-js',
