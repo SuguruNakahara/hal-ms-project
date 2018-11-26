@@ -10,29 +10,26 @@ function createNumber(jsonData) {
   //  frequency Color
   const frequency = jsonData["color"];
   let frequencySound = 0;
+  frequencySound = frequency % 3;
+
   if (frequency < 20) {
-    frequencySound = frequency % 3;
     arr.push(0);
   } else if (frequency < 30) {
-    frequencySound = frequency % 3;
     arr.push(1);
   } else if (frequency < 40) {
-    frequencySound = frequency % 3;
     arr.push(2);
   } else if (frequency < 50) {
-    frequencySound = frequency % 3;
     arr.push(3);
   } else if (frequency < 60) {
-    frequencySound = frequency % 3;
     arr.push(4);
   } else { // purple
     arr.push(5);
   }
 
   //star
-  arr.push(Math.floor(fmt(jsonData["star-value"], 100, 500)));
-  arr.push(fmt(jsonData["star-size"], 3, 8));
-  arr.push(fmt(jsonData["star-opacity"], 0.1, 1));
+  arr.push(Math.floor(fmt(jsonData["star-value"], 200, 500)));
+  arr.push(fmt(jsonData["star-size"], 5, 8));
+  arr.push(fmt(jsonData["star-opacity"], 0.5, 1));
 
   // shooting
   arr.push(Math.floor(fmt(jsonData["shooting-speed"], 5, 15)));

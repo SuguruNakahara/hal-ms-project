@@ -87,7 +87,7 @@ function milky(milkys) {
         },
         "move": {
           "enable": true,
-          "speed": 0.3,
+          "speed": 0.7,
           "direction": "bottom",
           "random": false,
           "straight": true,

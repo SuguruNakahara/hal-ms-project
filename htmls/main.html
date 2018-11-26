@@ -5,6 +5,7 @@
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/vnd.microsoft.icon">
     <title>HAL MS PROJECT</title>
     <link rel="stylesheet" href="../css/main.css">
+    <link rel=“preload” href=“../font/azuki.ttf” as=“font”>
     <script src="../js/chart.min.js"></script>
     <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
     <script src="../js/particles.js-master/particles.js"></script>
@@ -51,6 +52,10 @@
       flex-direction: column;
     }
 
+    #graph {
+      align-self: center;
+    }
+
     .graphText p{
       width: 80%;
       font-size: 2vw;
@@ -93,6 +98,14 @@
       z-index: 10;
       opacity: 0;
     }
+
+    #white-box {
+      position: absolute;
+      background: white;
+      width: 50%;
+      height: 12%;
+      z-index: 20000;
+    }
       
 
     @keyframes kirakira {
@@ -115,6 +128,7 @@
     <div id="back"></div>
 
     <div id="container">
+      <div id="white-box"></div>
       <canvas class="item" id="graph"></canvas>
       <div class="item graphText">
         <h1 class="container_h"></h1>

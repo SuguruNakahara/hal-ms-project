@@ -2,27 +2,64 @@ function setGraph(value) {
 
   let arr = Array();
   if (value[0] == 0) { // red
-    arr.push(10, 5, 5, 5, 5, 5);
+    if(value[13] == 0) {
+      arr.push(10, 9, 8, 7, 5, 5);
+    } else if(value[13] == 1) {
+      arr.push(10, 8, 7, 9, 5, 5);
+    } else {
+      arr.push(10, 7, 8, 9, 5, 5);
+    }
 
   } else if (value[0] == 1) { // orange
-    arr.push(5, 10, 5, 5, 5, 5);
+    if(value[13] == 0) {
+      arr.push(5, 10, 5, 5, 5, 5);
+    } else if(value[13] == 1) {
+      arr.push(5, 10, 5, 5, 5, 5);
+    } else {
+      arr.push(5, 10, 5, 5, 5, 5);
+    }
 
   } else if (value[0] == 2) { // yellow
-    arr.push(5, 5, 10, 5, 5, 5);
+    if(value[13] == 0) {
+      arr.push(5, 5, 10, 5, 5, 5);
+    } else if(value[13] == 1) {
+      arr.push(5, 5, 10, 5, 5, 5);
+    } else {
+      arr.push(5, 5, 10, 5, 5, 5);
+    }
 
   } else if (value[0] == 3) { // green
-    arr.push(5, 5, 5, 10, 5, 5);
+    if(value[13] == 0) {
+      arr.push(5, 5, 5, 10, 5, 5);
+    } else if(value[13] == 1) {
+      arr.push(5, 5, 5, 10, 5, 5);
+    } else {
+      arr.push(5, 5, 5, 10, 5, 5);
+    }
 
   } else if (value[0] == 4) { // blue
-    arr.push(5, 5, 5, 5, 10, 5);
+    if(value[13] == 0) {
+      arr.push(5, 5, 5, 5, 10, 5);
+    } else if(value[13] == 1) {
+      arr.push(5, 5, 5, 5, 10, 5);
+    } else {
+      arr.push(5, 5, 5, 5, 10, 5);
+    }
 
   } else { // purple
-    arr.push(5, 5, 5, 5, 5, 10);
+    if(value[13] == 0) {
+      arr.push(5, 5, 5, 5, 5, 10);
+    } else if(value[13] == 1) {
+      arr.push(5, 5, 5, 5, 5, 10);
+    } else {
+      arr.push(5, 5, 5, 5, 5, 10);
+    }
 
   }
 
   var ctx = document.getElementById('graph').getContext('2d');
   ctx.canvas.height =  window.innerHeight/8;
+  // ctx.canvas.height =  window.innerHeight/3;
   var myChart = new Chart(ctx, {
     type: 'polarArea',
     data: {
@@ -30,7 +67,7 @@ function setGraph(value) {
       datasets: [{
         backgroundColor: [
           "red",
-          "orange",
+          "#ffa229",
           "yellow",
           "green",
           "blue",

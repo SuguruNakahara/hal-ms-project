@@ -3,7 +3,7 @@ var manager,
     canvas,
     canvasContext;
 
-const colors = ["#FF0000","#FFA500","#FFFF00","#00FF00","#2cadf8","#800080"];
+const colors = ["#FF2200","#FFA500","#FFFF00","#00FF00","#2cadf8","#ff00ff"];
 
 const soundList = [
   ["Electro_Rainbow", "goshiki", "IntoTheLight"],  // red
@@ -11,7 +11,7 @@ const soundList = [
   ["SmilesOfFortune", "Greens", "i33"],  //yellow
   ["natsuNoOmoide", "c2", "new_world"],  //green
   ["aoihosi", "kuuhakutoseizyaku", "ahurera"],  //blue
-  ["n136"]   //perple
+  ["Nows-The-Time", "Confirmation", "Sandu"]   //perple
 ];
 
 function visualizer_design(size, line_width, fill, name, color){
