@@ -43,7 +43,7 @@ function visualizer_design(size, line_width, fill, name, color){
           len = dat.length,
           haf = len / 2,
           rad = canvas.height/12,
-          siz = size;
+          siz = size*2;
 
         canvasContext.clearRect(0, 0, canvas.width, canvas.height);
         canvasContext.strokeStyle = colors[fill];

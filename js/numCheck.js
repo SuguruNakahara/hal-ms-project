@@ -12,15 +12,15 @@ function createNumber(jsonData) {
   let frequencySound = 0;
   frequencySound = frequency % 3;
 
-  if (frequency < 20) {
+  if (frequency < 40) {
     arr.push(0);
-  } else if (frequency < 30) {
+  } else if (frequency < 70) {
     arr.push(1);
-  } else if (frequency < 40) {
+  } else if (frequency < 90) {
     arr.push(2);
-  } else if (frequency < 50) {
+  } else if (frequency < 110) {
     arr.push(3);
-  } else if (frequency < 60) {
+  } else if (frequency < 130) {
     arr.push(4);
   } else { // purple
     arr.push(5);

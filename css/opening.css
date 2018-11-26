@@ -15,7 +15,7 @@ body {
 #frame{
   position:absolute;
   width: 100vw;
-  height: 130vh;
+  height: 180vh;
   overflow:hidden;
   font-size: 2.5vw;
   text-align:center;
@@ -24,7 +24,7 @@ body {
 }
 
 .roll{
-  margin-top: 20%;
+  margin-top: 70%;
   transform: translateY(100vh);
   animation-timing-function: linear;
   animation-iteration-count: 1;
@@ -39,7 +39,7 @@ body {
     transform: translateY(100vh);
   }
   100%{
-    transform: translateY(-550vh);
+    transform: translateY(-650vh);
   }
 }
 
@@ -93,7 +93,7 @@ html:after{
 #wrap{
   user-select: none;
   position:absolute;
-  top:-30%;
+  top:-80%;
   bottom:0;
   left:0;
   right:0;

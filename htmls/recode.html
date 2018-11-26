@@ -31,6 +31,7 @@
   function uploadAndFadeNext () {
     jsonUpload(median_arr(data));
     offRecod();
+
     fadeOut(document.querySelector('.selector'), 2000);
     setTimeout(function(){
       if (uploadFlg == 500) {
@@ -98,7 +99,7 @@
         onEnterFrame: function() {
           data.push(manager.analysers.mic.getByteFrequencyData(64));
 
-          time_count = time_count + 10;
+          time_count = time_count + 120;
 
           var me  = this,
           dat = me.analysers.mic.getByteFrequencyData(512),
@@ -108,7 +109,7 @@
           siz = time_count;
 
           const lower_limit = dat.every(isBelowThreshold);
-          if (lower_limit && time_count > 1500) {
+          if (lower_limit && time_count > 7000) {
               me.stopLoop()
               uploadAndFadeNext();
           }
