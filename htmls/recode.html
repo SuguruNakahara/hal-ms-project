@@ -97,7 +97,7 @@
           console.log('マイク入力がリジェクトされました');
         },
         onEnterFrame: function() {
-          data.push(manager.analysers.mic.getByteFrequencyData(64));
+          data.push(manager.analysers.mic.getByteFrequencyData(32));
 
           time_count = time_count + 120;
 
